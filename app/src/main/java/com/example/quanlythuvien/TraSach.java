@@ -96,7 +96,9 @@ public class TraSach extends AppCompatActivity {
 //                        DanhSachTra.data_ts.remove(item);
                 TSach tSach = new TSach();
                 tSach.setMaMS(tvMaMS.getText().toString());
-                dbTraSach.XoaDl(tSach);
+                Danh_Sach_Tra.data_ts.clear();
+                Danh_Sach_Tra.data_ts.addAll(dbTraSach.XoaDL(tSach));
+                adapter_s.notifyDataSetChanged();
                 Toast.makeText(TraSach.this, "Xoá thành công", Toast.LENGTH_SHORT).show();
 //                        break;
 //                    }

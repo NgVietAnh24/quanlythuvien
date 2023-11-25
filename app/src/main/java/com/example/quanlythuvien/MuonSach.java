@@ -28,7 +28,7 @@ public class MuonSach extends AppCompatActivity {
     List<TSach> data_s = new ArrayList<>();
     List<String> data_ts = new ArrayList<>();
     ArrayAdapter adapter_s;
-
+    AdapterSach adapterSach;
     DB_TraSach dbTraSach;
 
     @Override

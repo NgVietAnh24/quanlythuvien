@@ -38,10 +38,32 @@ public class DB_Sach extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sql, new String[]{s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTenNXB(), s.getNhanVien(), s.getNamXB(), s.getMaSach()});
     }
 
-    public void TimDLTheoTen(Sach s) {
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "Select * From tbSach Where tensach Like '%'+?+''%''";
-        sqLiteDatabase.execSQL(sql, new String[]{s.getTenSach()});
+    public List<Sach> TimDLTheoTen(Sach s) {
+        List<Sach> data = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        String sql = "SELECT * FROM tbSach WHERE tensach LIKE ?";
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{"%" + s.getTenSach() + "%"});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                Sach sach = new Sach();
+                sach.setMaSach(cursor.getString(0));
+                sach.setTenSach(cursor.getString(1));
+                sach.setSoTrang(cursor.getString(2));
+                sach.setSoLuong(cursor.getString(3));
+                sach.setGiaSach(cursor.getString(4));
+                sach.setTacGia(cursor.getString(5));
+                sach.setTenNXB(cursor.getString(6));
+                sach.setNhanVien(cursor.getString(7));
+                sach.setNamXB(cursor.getString(8));
+                data.add(sach);
+            } while (cursor.moveToNext());
+
+            // Đóng Cursor sau khi sử dụng
+            cursor.close();
+        }
+
+        return data;
     }
 
     public List<Sach> DocDL() {

@@ -48,11 +48,10 @@ public class TimSach extends AppCompatActivity {
             public void onClick(View view) {
                 Sach sach = new Sach();
                 sach.setTenSach(edtTenSach.getText().toString());
-                dbSach.TimDLTheoTen(sach);
-//                data_s.clear();
-                data_s.addAll(dbSach.DocDL());
+                data_s.clear();
+                data_s.addAll(dbSach.TimDLTheoTen(sach));
                 adapter_s.notifyDataSetChanged();
-                Toast.makeText(TimSach.this, "Tìm thành công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TimSach.this, "Tìm thành công", Toast.LENGTH_SHORT).show();
             }
         });
     }

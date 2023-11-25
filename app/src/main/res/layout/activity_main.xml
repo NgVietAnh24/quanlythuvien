@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="#2196F3"
         android:gravity="center"
-        android:text="Quản lý thư viên"
+        android:text="Quản lý thư viện"
         android:textSize="42sp"
         android:textStyle="bold" />
 

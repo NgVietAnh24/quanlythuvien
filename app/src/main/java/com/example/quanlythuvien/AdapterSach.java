@@ -16,6 +16,7 @@ public class AdapterSach extends ArrayAdapter {
     Context context;
     int resource;
     List<TSach> data;
+    DB_Sach dbSach;
     public AdapterSach(@NonNull Context context, int resource, List<TSach> data ) {
         super(context, resource, data);
         this.context = context;
