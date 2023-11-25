@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+
+    tools:context=".Nhap_Sach">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="#2196F3"
+        android:gravity="center"
+        android:text="Nhập sách"
+        android:textSize="30sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvMaSach"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Mã sách:"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/edtMaSach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập mã sách" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvTenSach"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Tên sách:"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/edtTenSach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên sách" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvSoTrang"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Số trang:"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/edtSoTrang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số trang"
+            android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvSoLuong"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Số lượng:"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/edtSoLuong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số lượng"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvGia"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Giá sách:"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/edtGia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập giá sách"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvTacGia"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Tác giả:"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/edtTacGia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tác giả"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvTenNXB"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Tên NXB:"
+            android:textSize="19sp" />
+
+        <Spinner
+            android:id="@+id/spTenNXB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvNV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Nhân viên:"
+            android:textSize="19sp" />
+
+        <Spinner
+            android:id="@+id/spNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvNXB"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Năm XB:"
+            android:textSize="19sp" />
+
+        <EditText
+            android:id="@+id/edtNXB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập NXB"
+            android:inputType="number" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btnThem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+            android:text="Thêm" />
+
+        <Button
+            android:id="@+id/btnXoa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+
+            android:text="Xóa" />
+
+        <Button
+            android:id="@+id/btnSua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+
+            android:text="Sửa" />
+
+        <Button
+            android:id="@+id/btnDanhSach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+            android:text="Danh sách" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvDanhSach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:divider="#5A0BE8"
+        android:dividerHeight="3dp"
+        android:listSelector="#D1EAB4" />
+
+</LinearLayout>

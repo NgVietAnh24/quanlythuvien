@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChiTietSach">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:gravity="center"
+        android:text="Sách"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Mã mượn sách:"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvMaMS"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Tên độc giả:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtTenDG"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Mã thẻ:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtMaThe"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Ngày dự trả:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtNgayDT"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0"
+            android:inputType="date" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Ngày thực trả:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtNgayTT"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0"
+            android:inputType="date"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Mã sách:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtMaSach"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Tình trạng sách:"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spTinhTS"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="250dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnSua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="#2196F3"
+            android:text="Sửa" />
+
+        <Button
+            android:id="@+id/btnXoa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="#2196F3"
+            android:text="Xoá" />
+
+        <Button
+            android:id="@+id/btnQuayLai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+            android:text="Quay Lại" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

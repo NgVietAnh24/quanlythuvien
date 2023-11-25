@@ -1,0 +1,73 @@
+package com.example.quanlythuvien;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DB_Sach extends SQLiteOpenHelper {
+    public DB_Sach(Context context) {
+        super(context, "dbSach", null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        String sql = "Create table tbSach(masach text, tensach text, sotrang text, soluong text, giasach text, tacgia text, tennxb text, tennv text, namxb text)";
+        sqLiteDatabase.execSQL(sql);
+
+    }
+
+    public void ThemDl(Sach s) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String sql = "insert into tbSach values(?,?,?,?,?,?,?,?,?)";
+        sqLiteDatabase.execSQL(sql, new String[]{s.getMaSach(), s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTenNXB(), s.getNhanVien(), s.getNamXB()});
+    }
+
+    public void XoaDl(Sach s) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String sql = "Delete from tbSach where masach=?";
+        sqLiteDatabase.execSQL(sql, new String[]{s.getMaSach()});
+    }
+
+    public void SuaDl(Sach s) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String sql = "Update tbSach set tensach=?, sotrang=?, soluong=?, giasach=?, tacgia=?,tennxb=?, tennv = ?, namxb=? where masach=?  ";
+        sqLiteDatabase.execSQL(sql, new String[]{s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTenNXB(), s.getNhanVien(), s.getNamXB(), s.getMaSach()});
+    }
+
+    public void TimDLTheoTen(Sach s) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String sql = "Select * From tbSach Where tensach Like '%'+?+''%''";
+        sqLiteDatabase.execSQL(sql, new String[]{s.getTenSach()});
+    }
+
+    public List<Sach> DocDL() {
+        List<Sach> data = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        String sql = "Select * from tbSach";
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Sach sach = new Sach();
+                sach.setMaSach(cursor.getString(0));
+                sach.setTenSach(cursor.getString(1));
+                sach.setSoTrang(cursor.getString(2));
+                sach.setSoLuong(cursor.getString(3));
+                sach.setGiaSach(cursor.getString(4));
+                sach.setTacGia(cursor.getString(5));
+                sach.setTenNXB(cursor.getString(6));
+                sach.setNhanVien(cursor.getString(7));
+                sach.setNamXB(cursor.getString(8));
+                data.add(sach);
+            } while (cursor.moveToNext());
+        }
+        return data;
+    }
+
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
+}

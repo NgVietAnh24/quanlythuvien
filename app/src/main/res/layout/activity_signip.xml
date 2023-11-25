@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:text="Sign up"
+        android:textSize="60sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Username: "
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtUserName"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Password: "
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0"
+            android:inputType="textPassword"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password: "
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtConfirmPassword"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:background="#E4E0E0"
+            android:inputType="textPassword"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+            android:text="Cancel"
+            android:textColor="#000"
+            android:textSize="20sp"
+
+            />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:backgroundTint="#2196F3"
+            android:text="Sign Up"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:gravity="center"
+        android:text="Quản lý thư viên"
+        android:textSize="42sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ibtnUser"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/border_user"
+            />
+
+        <ImageButton
+            android:id="@+id/ibtnMuonTra"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="120dp"
+            android:background="@drawable/border_muontra" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Người dùng"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:gravity="center"
+            android:text="Mượn trả"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ibtnSach"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/border_sach"
+
+            />
+
+        <ImageButton
+            android:id="@+id/ibtnThe"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="120dp"
+            android:background="@drawable/border_the" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Sách"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:gravity="center"
+            android:text="Thẻ thư viện"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ibtnThongKe"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/border_thongke"
+
+            />
+
+        <ImageButton
+            android:id="@+id/ibtnTimSach"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="120dp"
+            android:background="@drawable/border_timsach" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Thống kê"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:gravity="center"
+            android:text="Tìm sách"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+</LinearLayout>
