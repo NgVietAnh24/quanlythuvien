@@ -1,5 +1,6 @@
 package com.example.quanlythuvien;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -88,7 +89,33 @@ public class DB_Sach extends SQLiteOpenHelper {
         }
         return data;
     }
+    // Thống kê số lượng sách cũ
+    @SuppressLint("Range")
+    public int getCountSachCu() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbTSach WHERE namxb < '2022-04-10'", null);
 
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(cursor.getColumnIndex("total"));
+        }
+
+        cursor.close();
+        return count;
+    }
+    @SuppressLint("Range")
+    public int getCountSachMoi() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbTSach WHERE namxb > '2022-04-10'", null);
+
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(cursor.getColumnIndex("total"));
+        }
+
+        cursor.close();
+        return count;
+    }
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }

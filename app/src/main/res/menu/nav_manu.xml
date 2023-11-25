@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mnBack"
+        android:icon="@drawable/baseline_arrow_back_24"
+        android:title="Quay Về"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/mnThoat"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Thoát"
+        app:showAsAction="always"/>
+
+</menu>

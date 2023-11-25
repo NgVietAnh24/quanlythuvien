@@ -2,10 +2,13 @@ package com.example.quanlythuvien;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -28,15 +31,15 @@ public class Danh_Sach_Tra extends AppCompatActivity {
     }
 
     private void setEvent() {
-        KhoiTao();
+//        KhoiTao();
         adapter_Sach = new AdapterSach(this, R.layout.activity_sach_item, data_ts);
         lvDanhSach.setAdapter(adapter_Sach);
 
         lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(Danh_Sach_Tra.this,TraSach.class);
-                intent.putExtra("item",data_ts.get(i));
+                Intent intent = new Intent(Danh_Sach_Tra.this, TraSach.class);
+                intent.putExtra("item", data_ts.get(i));
                 startActivity(intent);
             }
         });
@@ -51,11 +54,11 @@ public class Danh_Sach_Tra extends AppCompatActivity {
         });
     }
 
-    private void KhoiTao() {
-        data_ts.add(new TSach("MS001","Nguyễn Văn Anh","TV001","27 - 03 - 2023","28 - 04 - 2023", "S001", "Cũ"));
-        data_ts.add(new TSach("MS002","Nguyễn Văn Nam","TV002","27 - 03 - 2023","28 - 04 - 2023", "S002", "Mới"));
-        data_ts.add(new TSach("MS003","Nguyễn Văn Tùng","TV003","27 - 03 - 2023","28 - 04 - 2023", "S003", "Cũ"));
-    }
+//    private void KhoiTao() {
+//        data_ts.add(new TSach("MS001","Nguyễn Văn Anh","TV001","27 - 03 - 2023","28 - 04 - 2023", "S001", "Cũ"));
+//        data_ts.add(new TSach("MS002","Nguyễn Văn Nam","TV002","27 - 03 - 2023","28 - 04 - 2023", "S002", "Mới"));
+//        data_ts.add(new TSach("MS003","Nguyễn Văn Tùng","TV003","27 - 03 - 2023","28 - 04 - 2023", "S003", "Cũ"));
+//    }
 
 //    private void KhoiTao() {
 //        data_ts.add(new Sach("MS001","Nguyễn Văn Anh","TV001","27 - 03 - 2023","28 - 04 - 2023", "S001", "Cũ");
@@ -67,21 +70,19 @@ public class Danh_Sach_Tra extends AppCompatActivity {
         lvDanhSach = findViewById(R.id.lvDanhSach);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.nav_manu,menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        if (item.getItemId() == R.id.mnNSach) {
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//        }
-////        if(item.getItemId() == R.id.mnThoat)
-////        {
-////            finish();
-////        }
-//        return super.onOptionsItemSelected(item);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.nav_manu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.mnBack) {
+            onBackPressed();
+        }
+        if (item.getItemId() == R.id.mnThoat) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

@@ -26,7 +26,7 @@ public class DB_TraSach extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sql, new String[]{tSach.getMaMS(), tSach.getTenDG(), tSach.getMaThe(), tSach.getNgayDT(), tSach.getNgayTT(), tSach.getMaSach(), tSach.getTinhTS()});
     }
 
-//    public void XoaDl(TSach tSach) {
+    //    public void XoaDl(TSach tSach) {
 //        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 //        String sql = "Delete from tbTSach where mams=?";
 //        sqLiteDatabase.execSQL(sql, new String[]{tSach.getMaMS()});
@@ -57,11 +57,39 @@ public class DB_TraSach extends SQLiteOpenHelper {
 
         return data;
     }
-    public void SuaDl(TSach tSach) {
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+    //    public void SuaDl(TSach tSach) {
+//        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+//        String sql = "Update tbTSach set tendg=?, mathe=?, ngaydt=?, ngaytt=?, masach=?,tinhts=? where mams=?  ";
+//        sqLiteDatabase.execSQL(sql, new String[]{tSach.getTenDG(), tSach.getMaThe(), tSach.getNgayDT(), tSach.getNgayTT(), tSach.getMaSach(), tSach.getTinhTS(), tSach.getMaMS()});
+//    }
+    public List<TSach> SuaDL(TSach t) {
+        List<TSach> data = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String sql = "Update tbTSach set tendg=?, mathe=?, ngaydt=?, ngaytt=?, masach=?,tinhts=? where mams=?  ";
-        sqLiteDatabase.execSQL(sql, new String[]{tSach.getTenDG(), tSach.getMaThe(), tSach.getNgayDT(), tSach.getNgayTT(), tSach.getMaSach(), tSach.getTinhTS(), tSach.getMaMS()});
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{t.getTenDG(), t.getMaThe(), t.getNgayDT(), t.getNgayTT(), t.getMaSach(), t.getTinhTS(), t.getMaMS()});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                TSach tSach = new TSach();
+                tSach.setMaMS(cursor.getString(0));
+                tSach.setTenDG(cursor.getString(1));
+                tSach.setMaThe(cursor.getString(2));
+                tSach.setNgayDT(cursor.getString(3));
+                tSach.setNgayTT(cursor.getString(4));
+                tSach.setMaSach(cursor.getString(5));
+                tSach.setTinhTS(cursor.getString(6));
+
+                data.add(tSach);
+            } while (cursor.moveToNext());
+
+            // Đóng Cursor sau khi sử dụng
+            cursor.close();
+        }
+
+        return data;
     }
+
 
     public List<TSach> DocDL() {
         List<TSach> data = new ArrayList<>();

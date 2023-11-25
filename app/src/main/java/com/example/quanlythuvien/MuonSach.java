@@ -86,11 +86,15 @@ public class MuonSach extends AppCompatActivity {
                 item.setTinhTS(spTinhTS.getSelectedItem().toString());
                 dbTraSach.ThemDl(item);
                 Toast.makeText(MuonSach.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(MuonSach.this, Danh_Sach_Tra.class);
-//                intent.putExtra("item", data_s.get(i));
-
-//                DanhSachTra.adapter_Sach.notifyDataSetChanged();
-//                onBackPressed();
+                // Làm mới sau khi mượn sách
+                edtMaMS.setText("");
+                edtTenDG.setText("");
+                edtMaThe.setText("");
+                edtNgayDT.setText("");
+                edtNgayTT.setText("");
+                edtMaSach.setText("");
+                spTinhTS.setSelection(0);
+                edtMaMS.requestFocus();
             }
         });
         btnThoat.setOnClickListener(new View.OnClickListener() {

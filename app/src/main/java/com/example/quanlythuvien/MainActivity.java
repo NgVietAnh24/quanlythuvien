@@ -2,9 +2,12 @@ package com.example.quanlythuvien;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ibtnThongKe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Chuyển sang màn hình thống kê
+                Intent intent = new Intent(MainActivity.this, ThongKe.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setControl() {
@@ -62,5 +73,23 @@ public class MainActivity extends AppCompatActivity {
         ibtnThe = findViewById(R.id.ibtnThe);
         ibtnThongKe = findViewById(R.id.ibtnThongKe);
         ibtnTimSach = findViewById(R.id.ibtnTimSach);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.nav_manu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.mnBack)
+        {
+            onBackPressed();
+        }
+        if(item.getItemId() == R.id.mnThoat)
+        {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

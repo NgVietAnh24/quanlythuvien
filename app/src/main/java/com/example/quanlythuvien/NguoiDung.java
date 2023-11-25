@@ -2,10 +2,13 @@ package com.example.quanlythuvien;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -55,6 +58,22 @@ public class NguoiDung extends AppCompatActivity {
         lvDanhSach = findViewById(R.id.lvDanhSach);
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.nav_manu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.mnBack)
+        {
+            onBackPressed();
+        }
+        if(item.getItemId() == R.id.mnThoat)
+        {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
 

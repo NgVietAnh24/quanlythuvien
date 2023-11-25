@@ -1,5 +1,6 @@
 package com.example.quanlythuvien;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -82,7 +83,9 @@ public class TraSach extends AppCompatActivity {
                 item.setNgayTT(edtNgayTT.getText().toString());
                 item.setMaSach(edtMaSach.getText().toString());
                 item.setTinhTS(spTinhTS.getSelectedItem().toString());
-                dbTraSach.SuaDl(item);
+                Danh_Sach_Tra.data_ts.clear();
+                Danh_Sach_Tra.data_ts.addAll(dbTraSach.SuaDL(item));
+                adapter_s.notifyDataSetChanged();
                 Toast.makeText(TraSach.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
 
 
@@ -91,20 +94,21 @@ public class TraSach extends AppCompatActivity {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                for (TSach item : DanhSachTra.data_ts) {
-//                    if (item.getMaMS().equals(tSach.getMaMS())) {
-//                        DanhSachTra.data_ts.remove(item);
                 TSach tSach = new TSach();
                 tSach.setMaMS(tvMaMS.getText().toString());
                 Danh_Sach_Tra.data_ts.clear();
                 Danh_Sach_Tra.data_ts.addAll(dbTraSach.XoaDL(tSach));
                 adapter_s.notifyDataSetChanged();
                 Toast.makeText(TraSach.this, "Xoá thành công", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    }
-//                }
-//                DanhSachTra.adapter_Sach.notifyDataSetChanged();
-//                onBackPressed();
+                // LÀm mới sau khi xóa
+                   tvMaMS.setText("");
+                edtTenDG.setText("");
+                edtMaThe.setText("");
+                edtNgayDT.setText("");
+                edtNgayTT.setText("");
+                edtMaSach.setText("");
+                spTinhTS.setSelection(0);
+                edtTenDG.requestFocus();
             }
         });
 
@@ -115,7 +119,8 @@ public class TraSach extends AppCompatActivity {
                 Danh_Sach_Tra.data_ts.clear();
                 Danh_Sach_Tra.data_ts.addAll(dbTraSach.DocDL());
                 adapter_s.notifyDataSetChanged();
-                onBackPressed();
+                Intent intent = new Intent(TraSach.this, Danh_Sach_Tra.class);
+                startActivity(intent);
             }
         });
     }

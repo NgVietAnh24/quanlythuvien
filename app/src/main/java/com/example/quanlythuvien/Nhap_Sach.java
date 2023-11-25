@@ -127,6 +127,17 @@ public class Nhap_Sach extends AppCompatActivity {
 
                 dbSach.ThemDl(sachs);
                 Toast.makeText(Nhap_Sach.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                //Làm mới sau khi thêm sách
+                edtMaSach.setText("");
+                edtTenSach.setText("");
+                edtSoTrang.setText("");
+                edtSoLuong.setText("");
+                edtGia.setText("");
+                edtTacGia.setText("");
+                spTenNXB.setSelection(0);
+                spNV.setSelection(0);
+                edtNXB.setText("");
+                edtMaSach.requestFocus();
             }
         });
         btnXoa.setOnClickListener(new View.OnClickListener() {

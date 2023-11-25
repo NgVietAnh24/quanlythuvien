@@ -1,6 +1,8 @@
 package com.example.quanlythuvien;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -9,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,5 +63,22 @@ public class TimSach extends AppCompatActivity {
         edtTenSach = findViewById(R.id.edtTenSach);
         lvThongTin = findViewById(R.id.lvThongTin);
         btnTim = findViewById(R.id.btnTim);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.nav_manu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.mnBack)
+        {
+            onBackPressed();
+        }
+        if(item.getItemId() == R.id.mnThoat)
+        {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
