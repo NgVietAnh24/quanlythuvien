@@ -27,7 +27,7 @@ public class TraSach extends AppCompatActivity {
     Button btnSua, btnXoa, btnDanhSach;
     List<TSach> data_s = new ArrayList<>();
     List<String> data_ts = new ArrayList<>();
-    AdapterSach adapter_s;
+    ArrayAdapter adapter_s;
 
     DB_TraSach dbTraSach;
 
@@ -43,7 +43,7 @@ public class TraSach extends AppCompatActivity {
     private void setEvent() {
         KhoiTao();
         dbTraSach = new DB_TraSach(this);
-        adapter_s = new AdapterSach(this, android.R.layout.simple_list_item_1, data_s);
+        adapter_s = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_s);
         spTinhTS.setAdapter(adapter_s);
 
 
