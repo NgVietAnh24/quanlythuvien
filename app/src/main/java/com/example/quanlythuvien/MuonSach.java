@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,7 +27,7 @@ public class MuonSach extends AppCompatActivity {
     Button btnThem, btnThoat, btnDanhSach;
     List<TSach> data_s = new ArrayList<>();
     List<String> data_ts = new ArrayList<>();
-    AdapterSach adapter_s;
+    ArrayAdapter adapter_s;
 
     DB_TraSach dbTraSach;
 
@@ -42,7 +43,7 @@ public class MuonSach extends AppCompatActivity {
     private void setEvent() {
         KhoiTao();
         dbTraSach = new DB_TraSach(this);
-        adapter_s = new AdapterSach(this, android.R.layout.simple_list_item_1, data_s);
+        adapter_s = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_ts);
         spTinhTS.setAdapter(adapter_s);
         TSach item = new TSach();
         spTinhTS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
