@@ -1,6 +1,8 @@
 package com.example.quanlythuvien;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -213,5 +216,17 @@ public class Nhap_Sach extends AppCompatActivity {
         btnXoa = findViewById(R.id.btnXoa);
         btnSua = findViewById(R.id.btnSua);
         btnDanhSach = findViewById(R.id.btnDanhSach);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.nav_manu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.mnBack)
+        {
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

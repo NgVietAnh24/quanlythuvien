@@ -1,7 +1,6 @@
 package com.example.quanlythuvien;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,11 +11,13 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SignUp extends AppCompatActivity {
     EditText edtUserName, edtConfirmPassword, edtPassWord;
     Button btnCancel, btnSignUp;
-
-    SQLiteDatabase sqLiteDatabase;
+    List<String> data = new ArrayList<>();
     ArrayAdapter adapter;
     DB_Users db_users;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void setEvent() {
+        db_users = new DB_Users(this);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,15 +51,17 @@ public class SignUp extends AppCompatActivity {
                 }
                 String confirmPassword = edtConfirmPassword.getText().toString();
                 String passWord = edtPassWord.getText().toString();
+                // Mật khẩu và xác nhận mật khẩu khớp nhau
                 if (passWord.equals(confirmPassword)) {
-                    // Mật khẩu và xác nhận mật khẩu khớp nhau
-                    Toast.makeText(SignUp.this, "Xác nhận mật khẩu thành công", Toast.LENGTH_SHORT).show();
                     // Kiểm tra tên người dùng và mật khẩu
                     User user = new User();
                     user.setUsername(edtUserName.getText().toString());
                     user.setPassword(edtPassWord.getText().toString());
                     // Lưu thông tin người dùng
                     db_users.ThemDl(user);
+                    NguoiDung.data_u.clear();
+                    NguoiDung.data_u.addAll(db_users.DocDL());
+                    adapter.notifyDataSetChanged();
                     // Đăng ký thành công
                     Toast.makeText(SignUp.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                     // Chuyển sang màn hình đăng nhập
@@ -67,14 +72,13 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Mật khẩu không khớp. Vui lòng thử lại", Toast.LENGTH_SHORT).show();
                 }
 
-
-                // Kiểm tra thông tin người dùng có tồn tại không
+//                 Kiểm tra thông tin người dùng có tồn tại không
 //                    if (!edtUserName.equals(edtConfirmPassword)) {
 //                        Toast.makeText(SignUp.this, "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
 //                    } else {
-
-
-
+//
+//
+//
 //                    }
             }
         });

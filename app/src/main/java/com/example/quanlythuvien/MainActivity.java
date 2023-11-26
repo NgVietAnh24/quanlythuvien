@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton ibtnUser, ibtnMuonTra, ibtnSach, ibtnThe, ibtnThongKe, ibtnTimSach;
-
+    DB_Users db_users;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,9 +86,17 @@ public class MainActivity extends AppCompatActivity {
         {
             onBackPressed();
         }
-        if(item.getItemId() == R.id.mnThoat)
+        if(item.getItemId() == R.id.mnDangXuat)
         {
-            finish();
+
+            Notify_Exiyt.showLogoutConfirmationDialog(this, new Notify_Exiyt.OnLogoutConfirmedListener() {
+                @Override
+                public void onLogoutConfirmed() {
+                    // Người dùng chọn "Có", thực hiện đăng xuất ở đây
+                    Intent intent = new Intent(MainActivity.this,Login.class);
+                    startActivity(intent);
+                }
+            });
         }
         return super.onOptionsItemSelected(item);
     }

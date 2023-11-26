@@ -50,7 +50,7 @@ public class DB_Users extends SQLiteOpenHelper {
     //Kiểm tra người dùng có tồn tại hay không
     public boolean isUserExists(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM tbUSer WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM tbUser WHERE username = ? AND password = ?";
         Cursor cursor = db.rawQuery(sql, new String[]{username, password});
 
         boolean exists = cursor.moveToFirst();

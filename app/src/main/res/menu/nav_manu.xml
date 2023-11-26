@@ -7,9 +7,9 @@
         android:title="Quay Về"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/mnThoat"
-        android:icon="@drawable/baseline_home_24"
-        android:title="Thoát"
+        android:id="@+id/mnDangXuat"
+        android:icon="@drawable/baseline_exit_to_app_24"
+        android:title="Đăng xuất"
         app:showAsAction="always"/>
 
 </menu>

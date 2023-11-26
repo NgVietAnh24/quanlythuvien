@@ -75,10 +75,7 @@ public class TimSach extends AppCompatActivity {
         {
             onBackPressed();
         }
-        if(item.getItemId() == R.id.mnThoat)
-        {
-            finish();
-        }
+
         return super.onOptionsItemSelected(item);
     }
 }

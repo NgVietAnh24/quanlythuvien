@@ -80,9 +80,7 @@ public class Danh_Sach_Tra extends AppCompatActivity {
         if (item.getItemId() == R.id.mnBack) {
             onBackPressed();
         }
-        if (item.getItemId() == R.id.mnThoat) {
-            finish();
-        }
+
         return super.onOptionsItemSelected(item);
     }
 }

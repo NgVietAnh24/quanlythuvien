@@ -27,25 +27,23 @@ public class Login extends AppCompatActivity {
     }
 
     private void setEvent() {
-
+        db_users = new DB_Users(this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Kiểm tra tên người dùng và mật khẩu
                 String username = edtUserName.getText().toString();
                 String password = edtPassWord.getText().toString();
                 if (db_users.isUserExists(username, password)) {
-                        // Đăng nhập thành công
-                        Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-
-                        // Chuyển sang màn hình chính
-                        Intent intent = new Intent(Login.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        // Đăng nhập thất bại
-                        Toast.makeText(Login.this, "Tên người dùng hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
-                    }
+                    // Đăng nhập thành công
+                    Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    // Chuyển sang màn hình chính
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    // Đăng nhập thất bại
+                    Toast.makeText(Login.this, "Tên người dùng hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
