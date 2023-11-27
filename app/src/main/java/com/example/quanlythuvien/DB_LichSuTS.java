@@ -8,27 +8,27 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DB_TraSach extends SQLiteOpenHelper {
-    public DB_TraSach(Context context) {
-        super(context, "dbTSach", null, 1);
+public class DB_LichSuTS extends SQLiteOpenHelper {
+    public DB_LichSuTS(Context context) {
+        super(context, "dbLichSu", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbTSach(mams text, tendg text, mathe text, ngaydt text, ngaytt text, masach text, tinhts text)";
+        String sql = "Create table tbLichSu(mams text, tendg text, mathe text, ngaydt text, ngaytt text, masach text, tinhts text)";
         sqLiteDatabase.execSQL(sql);
 
     }
 
     public void ThemDl(TSach tSach) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "insert into tbTSach values(?,?,?,?,?,?,?)";
+        String sql = "insert into tbLichSu values(?,?,?,?,?,?,?)";
         sqLiteDatabase.execSQL(sql, new String[]{tSach.getMaMS(), tSach.getTenDG(), tSach.getMaThe(), tSach.getNgayDT(), tSach.getNgayTT(), tSach.getMaSach(), tSach.getTinhTS()});
     }
     public List<TSach> XoaDL(TSach t) {
         List<TSach> data = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String sql = "Delete from tbTSach where mams=?";
+        String sql = "Delete from tbLichSu where mams=?";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{t.getMaMS()});
 
         if (cursor != null && cursor.moveToFirst()) {
@@ -55,7 +55,7 @@ public class DB_TraSach extends SQLiteOpenHelper {
     public List<TSach> SuaDL(TSach t) {
         List<TSach> data = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String sql = "Update tbTSach set tendg=?, mathe=?, ngaydt=?, ngaytt=?, masach=?,tinhts=? where mams=?  ";
+        String sql = "Update tbLichSu set tendg=?, mathe=?, ngaydt=?, ngaytt=?, masach=?,tinhts=? where mams=?  ";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{t.getTenDG(), t.getMaThe(), t.getNgayDT(), t.getNgayTT(), t.getMaSach(), t.getTinhTS(), t.getMaMS()});
 
         if (cursor != null && cursor.moveToFirst()) {
@@ -83,7 +83,7 @@ public class DB_TraSach extends SQLiteOpenHelper {
     public List<TSach> DocDL() {
         List<TSach> data = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String sql = "Select * from tbTSach";
+        String sql = "Select * from tbLichSu";
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
             do {

@@ -1,11 +1,13 @@
 package com.example.quanlythuvien;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,9 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Login extends AppCompatActivity {
     EditText edtUserName, edtPassWord;
-    CheckBox ckRemember;
+    CheckBox checkBoxShowPassword;
     Button btnLogin, btnSignUp;
-    SQLiteDatabase sqLiteDatabase;
     DB_Users db_users;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,30 +57,24 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        checkBoxShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Nếu CheckBox được chọn, hiển thị mật khẩu; ngược lại, ẩn mật khẩu
+                if (isChecked) {
+                    edtPassWord.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    edtPassWord.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
     }
-//    private boolean validateInput(String username, String password) {
-//        // Kiểm tra xem các trường nhập liệu có rỗng không
-//        if (username.isEmpty() || password.isEmpty()) {
-//            Toast.makeText(this, "Vui lòng nhập tên người dùng và mật khẩu", Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//        return true;
-//    }
 
-//    private boolean checkUser(String username, String password) {
-//        // Kiểm tra xem người dùng có tồn tại trong cơ sở dữ liệu không
-//        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM users WHERE username=? AND password=?", new String[]{username, password});
-//        int count = cursor.getCount();
-//        cursor.close();
-//
-//        return count > 0;
-//    }
     // ánh xạ
     private void setControl() {
         edtUserName = findViewById(R.id.edtUserName);
         edtPassWord = findViewById(R.id.edtPassWord);
-        ckRemember = findViewById(R.id.ckRemember);
+        checkBoxShowPassword = findViewById(R.id.checkBoxShowPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnSignUp = findViewById(R.id.btnSignUp);
     }

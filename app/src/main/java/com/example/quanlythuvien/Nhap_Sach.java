@@ -127,7 +127,6 @@ public class Nhap_Sach extends AppCompatActivity {
                 sachs.setGiaSach(edtGia.getText().toString());
                 sachs.setTacGia(edtTacGia.getText().toString());
                 sachs.setNamXB(edtNXB.getText().toString());
-
                 dbSach.ThemDl(sachs);
                 Toast.makeText(Nhap_Sach.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 //Làm mới sau khi thêm sách

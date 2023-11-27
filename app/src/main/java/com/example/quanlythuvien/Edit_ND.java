@@ -34,9 +34,9 @@ public class Edit_ND extends AppCompatActivity {
         db_users = new DB_Users(this);
         adapter_u = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data_ts);
 
-//        TSach tSach = (TSach) getIntent().getSerializableExtra("item");
-//        edtUsername.setText(tSach.get\\());
-//        edtTenDG.setText(tSach.getTenDG());
+        User user = (User) getIntent().getSerializableExtra("item");
+        edtUsername.setText(user.getUsername());
+        edtPassword.setText(user.getPassword());
 
 
 
@@ -59,7 +59,9 @@ public class Edit_ND extends AppCompatActivity {
             public void onClick(View view) {
                 User user = new User();
                 user.setUsername(edtUsername.getText().toString());
-                db_users.XoaDl(user);
+                NguoiDung.data_u.clear();
+                NguoiDung.data_u.addAll(db_users.XoaDL(user));
+                adapter_u.notifyDataSetChanged();
                 Toast.makeText(Edit_ND.this, "Xoá thành công", Toast.LENGTH_SHORT).show();
 //                        break;
 //                    }

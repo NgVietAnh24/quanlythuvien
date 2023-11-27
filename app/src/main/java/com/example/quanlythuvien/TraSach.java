@@ -25,12 +25,13 @@ public class TraSach extends AppCompatActivity {
             edtMaSach;
     TextView tvMaMS;
     Spinner spTinhTS;
-    Button btnSua, btnXoa, btnDanhSach;
+    Button btnSua, btnXoa, btnDanhSach, btnLichSu;
     List<TSach> data_s = new ArrayList<>();
     List<String> data_ts = new ArrayList<>();
     ArrayAdapter adapter_s;
 
     DB_TraSach dbTraSach;
+    DB_LichSuTS dbLichSuTS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class TraSach extends AppCompatActivity {
     private void setEvent() {
         KhoiTao();
         dbTraSach = new DB_TraSach(this);
+        dbLichSuTS = new DB_LichSuTS(this);
         adapter_s = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_ts);
         spTinhTS.setAdapter(adapter_s);
 
@@ -75,7 +77,6 @@ public class TraSach extends AppCompatActivity {
         btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 item.setMaMS(tvMaMS.getText().toString());
                 item.setTenDG(edtTenDG.getText().toString());
                 item.setMaThe(edtMaThe.getText().toString());
@@ -86,6 +87,7 @@ public class TraSach extends AppCompatActivity {
                 Danh_Sach_Tra.data_ts.clear();
                 Danh_Sach_Tra.data_ts.addAll(dbTraSach.SuaDL(item));
                 adapter_s.notifyDataSetChanged();
+
                 Toast.makeText(TraSach.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
 
 
@@ -96,12 +98,14 @@ public class TraSach extends AppCompatActivity {
             public void onClick(View view) {
                 TSach tSach = new TSach();
                 tSach.setMaMS(tvMaMS.getText().toString());
+                tSach.setTenDG(edtTenDG.getText().toString());
+                dbLichSuTS.ThemDl(tSach);
                 Danh_Sach_Tra.data_ts.clear();
                 Danh_Sach_Tra.data_ts.addAll(dbTraSach.XoaDL(tSach));
                 adapter_s.notifyDataSetChanged();
                 Toast.makeText(TraSach.this, "Xoá thành công", Toast.LENGTH_SHORT).show();
                 // LÀm mới sau khi xóa
-                   tvMaMS.setText("");
+                tvMaMS.setText("");
                 edtTenDG.setText("");
                 edtMaThe.setText("");
                 edtNgayDT.setText("");
@@ -112,7 +116,6 @@ public class TraSach extends AppCompatActivity {
             }
         });
 
-
         btnDanhSach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +123,17 @@ public class TraSach extends AppCompatActivity {
                 Danh_Sach_Tra.data_ts.addAll(dbTraSach.DocDL());
                 adapter_s.notifyDataSetChanged();
                 Intent intent = new Intent(TraSach.this, Danh_Sach_Tra.class);
+                startActivity(intent);
+            }
+        });
+        btnLichSu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LichSuTS.data_ls.clear();
+                LichSuTS.data_ls.addAll(dbLichSuTS.DocDL());
+                adapter_s.notifyDataSetChanged();
+                // Chuyển sáng màn hình lịch sử
+                Intent intent = new Intent(TraSach.this, LichSuTS.class);
                 startActivity(intent);
             }
         });
@@ -141,6 +155,7 @@ public class TraSach extends AppCompatActivity {
         btnSua = findViewById(R.id.btnSua);
         btnXoa = findViewById(R.id.btnXoa);
         btnDanhSach = findViewById(R.id.btnDanhSach);
+        btnLichSu = findViewById(R.id.btnLichSu);
     }
 }
 

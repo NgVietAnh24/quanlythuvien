@@ -11,10 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageButton ibtnUser, ibtnMuonTra, ibtnSach, ibtnThe, ibtnThongKe, ibtnTimSach;
     DB_Users db_users;
+    List<User> data = new ArrayList<>();
+    AdapterUser adapterUser;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
+        db_users = new DB_Users(this);
+        adapterUser = new AdapterUser(this, R.layout.activity_item_users, data);
         ibtnMuonTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 // Chuyển sang màn hình người dùng
                 Intent intent = new Intent(MainActivity.this, NguoiDung.class);
                 startActivity(intent);
+                NguoiDung.data_u.clear();
+                NguoiDung.data_u.addAll(db_users.DocDL());
+                adapterUser.notifyDataSetChanged();
             }
         });
         ibtnTimSach.setOnClickListener(new View.OnClickListener() {
@@ -82,10 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.mnBack)
-        {
-            onBackPressed();
-        }
         if(item.getItemId() == R.id.mnDangXuat)
         {
 

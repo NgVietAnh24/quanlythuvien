@@ -29,10 +29,14 @@
             android:id="@+id/spThongKe"
             />
     </LinearLayout>
-    <ListView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvThongKe"/>
+        android:id="@+id/txtThongKe"/>
+<!--    <ListView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/lvThongKe"/>-->
 
 
 </LinearLayout>

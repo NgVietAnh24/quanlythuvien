@@ -13,23 +13,44 @@ public class DB_Users extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbUser(id text, username text, password text)";
+        String sql = "Create table tbUser( username text, password text)";
         sqLiteDatabase.execSQL(sql);
     }
     public void ThemDl(User user){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql ="insert into tbUSer values(?,?,?)";
-        sqLiteDatabase.execSQL(sql, new String[]{user.getId(),user.getUsername(),user.getPassword()});
+        String sql ="insert into tbUSer values(?,?)";
+        sqLiteDatabase.execSQL(sql, new String[]{user.getUsername(),user.getPassword()});
     }
-    public void XoaDl(User user) {
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "Delete from tbUser where id=?";
-        sqLiteDatabase.execSQL(sql, new String[]{user.getId()});
+//    public void XoaDl(User user) {
+//        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+//        String sql = "Delete from tbUser where id=?";
+//        sqLiteDatabase.execSQL(sql, new String[]{user.getId()});
+//    }
+public List<User> XoaDL(User user) {
+    List<User> data = new ArrayList<>();
+    SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+    String sql = "Delete from tbUser where username=?";
+    Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{user.getUsername()});
+
+    if (cursor != null && cursor.moveToFirst()) {
+        do {
+            TSach tSach = new TSach();
+            tSach.setMaMS(cursor.getString(0));
+            tSach.setTenDG(cursor.getString(1));
+
+            data.remove(tSach);
+        } while (cursor.moveToNext());
+
+        // Đóng Cursor sau khi sử dụng
+        cursor.close();
     }
+
+    return data;
+}
     public void SuaDl(User user){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql ="Update tbUser set username=?, password=? where id=? ";
-        sqLiteDatabase.execSQL(sql, new String[]{user.getUsername(),user.getPassword(),user.getId()});
+        String sql ="Update tbUser set  password=? where username=? ";
+        sqLiteDatabase.execSQL(sql, new String[]{user.getPassword(),user.getUsername()});
     }
     public List<User> DocDL(){
         List<User> data = new ArrayList<>();
@@ -39,9 +60,8 @@ public class DB_Users extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do{
                 User user = new User();
-                user.setId(cursor.getString(0));
-                user.setUsername(cursor.getString(1));
-                user.setPassword(cursor.getString(2));
+                user.setUsername(cursor.getString(0));
+                user.setPassword(cursor.getString(1));
                 data.add(user);
             }while (cursor.moveToNext());
         }

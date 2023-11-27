@@ -54,18 +54,6 @@ public class Danh_Sach_Tra extends AppCompatActivity {
         });
     }
 
-//    private void KhoiTao() {
-//        data_ts.add(new TSach("MS001","Nguyễn Văn Anh","TV001","27 - 03 - 2023","28 - 04 - 2023", "S001", "Cũ"));
-//        data_ts.add(new TSach("MS002","Nguyễn Văn Nam","TV002","27 - 03 - 2023","28 - 04 - 2023", "S002", "Mới"));
-//        data_ts.add(new TSach("MS003","Nguyễn Văn Tùng","TV003","27 - 03 - 2023","28 - 04 - 2023", "S003", "Cũ"));
-//    }
-
-//    private void KhoiTao() {
-//        data_ts.add(new Sach("MS001","Nguyễn Văn Anh","TV001","27 - 03 - 2023","28 - 04 - 2023", "S001", "Cũ");
-//        data_ts.add(new Sach("MS002","Nguyễn Văn Nam","TV002","27 - 03 - 2023","28 - 04 - 2023", "S001", "Mới"));
-//        data_ts.add(new Sach("MS003","Nguyễn Văn Tùng","TV003","27 - 03 - 2023","28 - 04 - 2023", "S001", "Cũ"));
-//    }
-
     private void setControl() {
         lvDanhSach = findViewById(R.id.lvDanhSach);
     }

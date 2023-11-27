@@ -1,6 +1,5 @@
 package com.example.quanlythuvien;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -89,33 +88,65 @@ public class DB_Sach extends SQLiteOpenHelper {
         }
         return data;
     }
+
     // Thống kê số lượng sách cũ
-    @SuppressLint("Range")
-    public int getCountSachCu() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbTSach WHERE namxb < '2022-04-10'", null);
+//    @SuppressLint("Range")
+//    public int getCountSachCu() {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbSach WHERE namxb < '2022-04-10'", null);
+//
+//        int count = 0;
+//        if (cursor.moveToFirst()) {
+//            count = cursor.getInt(cursor.getColumnIndex("total"));
+//        }
+//
+//        cursor.close();
+//        return count;
+//    }
+//    public int getCountSachCu() {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        String query = "SELECT COUNT(*) FROM tbSach WHERE isNew = 0";
+//        Cursor cursor = db.rawQuery(query, null);
+//
+//        int count = 0;
+//        if (cursor.moveToFirst()) {
+//            count = cursor.getInt(0);
+//        }
+//
+//        cursor.close();
+//        return count;
+//    }
 
-        int count = 0;
-        if (cursor.moveToFirst()) {
-            count = cursor.getInt(cursor.getColumnIndex("total"));
-        }
+    //    @SuppressLint("Range")
+//    public int getCountSachMoi() {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbTSach WHERE namxb > '2022-04-10'", null);
+//
+//        int count = 0;
+//        if (cursor.moveToFirst()) {
+//            count = cursor.getInt(cursor.getColumnIndex("total"));
+//        }
+//
+//        cursor.close();
+//        return count;
+//    }
+// Phương thức để đếm số lượng sách mới
+//    public int getCountSachMoi() {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        String query = "SELECT COUNT(*) FROM tbSach WHERE isNew = 1";
+//        Cursor cursor = db.rawQuery(query, null);
+//
+//        int count = 0;
+//        if (cursor.moveToFirst()) {
+//            count = cursor.getInt(0);
+//        }
+//
+//        cursor.close();
+//        return count;
+//    }
 
-        cursor.close();
-        return count;
-    }
-    @SuppressLint("Range")
-    public int getCountSachMoi() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbTSach WHERE namxb > '2022-04-10'", null);
 
-        int count = 0;
-        if (cursor.moveToFirst()) {
-            count = cursor.getInt(cursor.getColumnIndex("total"));
-        }
 
-        cursor.close();
-        return count;
-    }
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }

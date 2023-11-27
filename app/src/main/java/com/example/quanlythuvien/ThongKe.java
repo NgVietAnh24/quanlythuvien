@@ -6,8 +6,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +18,8 @@ import java.util.List;
 
 public class ThongKe extends AppCompatActivity {
     Spinner spThongKe;
-    ListView lvThongKe;
+//    ListView lvThongKe;
+    TextView txtThongKe;
     List<String> data_ts = new ArrayList<>();
     ArrayAdapter arrayAdapter;
     List<String> data_t = new ArrayList<>();
@@ -34,9 +35,10 @@ public class ThongKe extends AppCompatActivity {
     }
 
     private void setEvent() {
+        db_sach = new DB_Sach(this);
 
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_ts);
-        lvThongKe.setAdapter(arrayAdapter);
+//        lvThongKe.setAdapter(arrayAdapter);
         KhoiTao();
         arrayAdapter_t = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_t);
         spThongKe.setAdapter(arrayAdapter_t);
@@ -45,11 +47,13 @@ public class ThongKe extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectItem = data_t.get(i);
                 if(selectItem.equals("Sách cũ")){
-                    db_sach.getCountSachCu();
-                    arrayAdapter.notifyDataSetChanged();
+//                   int countCu = db_sach.getCountSachCu();
+//                    txtThongKe.setText("Số lượng sách cũ: " + countCu);
+//                    arrayAdapter.notifyDataSetChanged();
                 }else if(selectItem.equals("Sách mới")){
-                    db_sach.getCountSachMoi();
-                    arrayAdapter.notifyDataSetChanged();
+//                   int countMoi = db_sach.getCountSachMoi();
+//                    txtThongKe.setText("Số lượng sách cũ: " + countMoi);
+//                    arrayAdapter.notifyDataSetChanged();
                 }
 
             }
@@ -69,7 +73,8 @@ public class ThongKe extends AppCompatActivity {
     }
     private void setControl() {
         spThongKe = findViewById(R.id.spThongKe);
-        lvThongKe = findViewById(R.id.lvThongKe);
+//        lvThongKe = findViewById(R.id.lvThongKe);
+        txtThongKe = findViewById(R.id.txtThongKe);
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_manu,menu);
