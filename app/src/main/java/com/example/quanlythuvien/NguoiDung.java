@@ -21,6 +21,7 @@ public class NguoiDung extends AppCompatActivity {
 
     static AdapterUser adapter_u;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class NguoiDung extends AppCompatActivity {
     }
 
     private void setEvent() {
+
 
         adapter_u = new AdapterUser(this, R.layout.activity_item_users, data_u);
         lvDanhSach.setAdapter(adapter_u);

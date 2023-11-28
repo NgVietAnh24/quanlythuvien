@@ -3,19 +3,27 @@ package com.example.quanlythuvien;
 import java.io.Serializable;
 
 public class TSach implements Serializable {
-    String maMS, tenDG, maThe, ngayDT, ngayTT, maSach, tinhTS;
+    String maMS, tenDG, tenSach, maThe, ngayDT, ngayTT, maSach, tinhTS;
 
     public TSach() {
     }
-
-    public TSach(String maMS, String tenDG, String maThe, String ngayDT, String ngayTT, String maSach, String tinhTS) {
+    public TSach(String maMS, String tenDG, String tenSach, String maThe, String ngayDT, String ngayTT, String maSach, String tinhTS) {
         this.maMS = maMS;
         this.tenDG = tenDG;
+        this.tenSach = tenSach;
         this.maThe = maThe;
         this.ngayDT = ngayDT;
         this.ngayTT = ngayTT;
         this.maSach = maSach;
         this.tinhTS = tinhTS;
+    }
+
+    public String getTenSach() {
+        return tenSach;
+    }
+
+    public void setTenSach(String tenSach) {
+        this.tenSach = tenSach;
     }
 
     public String getMaMS() {

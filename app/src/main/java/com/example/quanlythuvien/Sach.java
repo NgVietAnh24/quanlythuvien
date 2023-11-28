@@ -1,21 +1,30 @@
 package com.example.quanlythuvien;
 
 public class Sach {
-    String MaSach, TenSach, SoTrang, SoLuong, GiaSach, TacGia, TenNXB, NhanVien, NamXB;
+    String MaSach, TenSach, SoTrang, SoLuong, GiaSach, TinhTS, TacGia, TenNXB, NhanVien, NamXB;
 
     public Sach() {
     }
 
-    public Sach(String maSach, String tenSach, String soTrang, String soLuong, String giaSach, String tacGia, String tenNXB, String nhanVien, String namXB) {
+    public Sach(String maSach, String tenSach, String soTrang, String soLuong, String giaSach, String tacGia, String tinhTS, String tenNXB, String nhanVien, String namXB) {
         MaSach = maSach;
         TenSach = tenSach;
         SoTrang = soTrang;
         SoLuong = soLuong;
         GiaSach = giaSach;
+        TinhTS = tinhTS;
         TacGia = tacGia;
         TenNXB = tenNXB;
         NhanVien = nhanVien;
         NamXB = namXB;
+    }
+
+    public String getTinhTS() {
+        return TinhTS;
+    }
+
+    public void setTinhTS(String tinhTS) {
+        TinhTS = tinhTS;
     }
 
     public String getMaSach() {
@@ -98,9 +107,10 @@ public class Sach {
                         "Số trang: " + SoTrang + '\n' +
                         "Số lượng: " + SoLuong + '\n' +
                         "Giá sách: " + GiaSach + '\n' +
+                        "Tác giả: " + TacGia + '\n' +
+                        "Tình trạng: "+ TinhTS + '\n' +
                         "Tên NXB: " + TenNXB + '\n' +
                         "Nhân viên: " + NhanVien + '\n' +
-                        "Tác giả: " + TacGia + '\n' +
                         "Năm xuất bản: " + NamXB + '\n';
     }
 }

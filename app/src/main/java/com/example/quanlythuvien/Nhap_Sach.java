@@ -26,17 +26,21 @@ public class Nhap_Sach extends AppCompatActivity {
             edtGia,
             edtTacGia,
             edtNXB;
-    Spinner spTenNXB,
+    Spinner spTenNXB, spTinhTS,
             spNV;
     Button btnThem, btnXoa, btnSua, btnDanhSach;
     List<String> data_t = new ArrayList<>();
     List<String> data_nv = new ArrayList<>();
+    List<String> data_ts = new ArrayList<>();
     ArrayAdapter adapter_t;
     ArrayAdapter adapter_nv;
+    ArrayAdapter adapter_ts;
     ListView lvDanhSach;
     List<Sach> data_s = new ArrayList<>();
-    ArrayAdapter adapter_s;
-    DB_Sach dbSach ;
+    static ArrayAdapter adapter_s;
+
+    DB_Sach dbSach;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +51,7 @@ public class Nhap_Sach extends AppCompatActivity {
 
     private void setEvent() {
         dbSach = new DB_Sach(this);
-        adapter_s = new ArrayAdapter(this, android.R.layout.simple_list_item_1,data_s);
+        adapter_s = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_s);
         lvDanhSach.setAdapter(adapter_s);
 
         KhoiTao();
@@ -55,8 +59,21 @@ public class Nhap_Sach extends AppCompatActivity {
         spTenNXB.setAdapter(adapter_t);
         adapter_nv = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_nv);
         spNV.setAdapter(adapter_nv);
+        adapter_ts = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_ts);
+        spTinhTS.setAdapter(adapter_ts);
 
         Sach sachs = new Sach();
+        spTinhTS.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sachs.setTinhTS(spTinhTS.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         spTenNXB.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -136,6 +153,7 @@ public class Nhap_Sach extends AppCompatActivity {
                 edtSoLuong.setText("");
                 edtGia.setText("");
                 edtTacGia.setText("");
+                spTinhTS.setSelection(0);
                 spTenNXB.setSelection(0);
                 spNV.setSelection(0);
                 edtNXB.setText("");
@@ -161,6 +179,7 @@ public class Nhap_Sach extends AppCompatActivity {
                 sach.setSoLuong(edtSoLuong.getText().toString());
                 sach.setGiaSach(edtGia.getText().toString());
                 sach.setTacGia(edtTacGia.getText().toString());
+                sach.setTinhTS(spTinhTS.getSelectedItem().toString());
                 sach.setTenNXB(spTenNXB.getSelectedItem().toString());
                 sach.setNhanVien(spNV.getSelectedItem().toString());
                 sach.setNamXB(edtNXB.getText().toString());
@@ -191,6 +210,7 @@ public class Nhap_Sach extends AppCompatActivity {
             }
         });
     }
+
     private void KhoiTao() {
         data_t.add("Nguyễn Thành Chung");
         data_t.add("Phạm Hữu Khải");
@@ -198,8 +218,11 @@ public class Nhap_Sach extends AppCompatActivity {
         data_nv.add("Nguyễn Văn Anh");
         data_nv.add("Phạm Văn Nhật");
         data_nv.add("Ngô Như Tuyết");
+        data_ts.add("Cũ");
+        data_ts.add("Mới");
 
     }
+
     private void setControl() {
         edtMaSach = findViewById(R.id.edtMaSach);
         edtTenSach = findViewById(R.id.edtTenSach);
@@ -210,19 +233,21 @@ public class Nhap_Sach extends AppCompatActivity {
         edtNXB = findViewById(R.id.edtNXB);
         spTenNXB = findViewById(R.id.spTenNXB);
         spNV = findViewById(R.id.spNV);
+        spTinhTS = findViewById(R.id.spTinhTS);
         lvDanhSach = findViewById(R.id.lvDanhSach);
         btnThem = findViewById(R.id.btnThem);
         btnXoa = findViewById(R.id.btnXoa);
         btnSua = findViewById(R.id.btnSua);
         btnDanhSach = findViewById(R.id.btnDanhSach);
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_manu,menu);
+        getMenuInflater().inflate(R.menu.nav_manu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.mnBack)
-        {
+        if (item.getItemId() == R.id.mnBack) {
             onBackPressed();
         }
 

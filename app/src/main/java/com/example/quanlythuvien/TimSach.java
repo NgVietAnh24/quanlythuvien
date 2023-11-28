@@ -49,12 +49,16 @@ public class TimSach extends AppCompatActivity {
         btnTim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Sach sach = new Sach();
-                sach.setTenSach(edtTenSach.getText().toString());
-                data_s.clear();
-                data_s.addAll(dbSach.TimDLTheoTen(sach));
-                adapter_s.notifyDataSetChanged();
-                Toast.makeText(TimSach.this, "Tìm thành công", Toast.LENGTH_SHORT).show();
+                if(Nhap_Sach.adapter_s != null) {
+                    Sach sach = new Sach();
+                    sach.setTenSach(edtTenSach.getText().toString());
+                    data_s.clear();
+                    data_s.addAll(dbSach.TimDLTheoTen(sach));
+                    adapter_s.notifyDataSetChanged();
+                    Toast.makeText(TimSach.this, "Tìm thành công", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(TimSach.this, "Không tìm thấy", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

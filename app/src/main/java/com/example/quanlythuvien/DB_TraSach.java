@@ -15,15 +15,15 @@ public class DB_TraSach extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbTSach(mams text, tendg text, mathe text, ngaydt text, ngaytt text, masach text, tinhts text)";
+        String sql = "Create table tbTSach(mams text, tendg text,tensach text, mathe text, ngaydt text, ngaytt text, masach text, tinhts text)";
         sqLiteDatabase.execSQL(sql);
 
     }
 
     public void ThemDl(TSach tSach) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "insert into tbTSach values(?,?,?,?,?,?,?)";
-        sqLiteDatabase.execSQL(sql, new String[]{tSach.getMaMS(), tSach.getTenDG(), tSach.getMaThe(), tSach.getNgayDT(), tSach.getNgayTT(), tSach.getMaSach(), tSach.getTinhTS()});
+        String sql = "insert into tbTSach values(?,?,?,?,?,?,?,?)";
+        sqLiteDatabase.execSQL(sql, new String[]{tSach.getMaMS(), tSach.getTenDG(), tSach.getTenSach(), tSach.getMaThe(), tSach.getNgayDT(), tSach.getNgayTT(), tSach.getMaSach(), tSach.getTinhTS()});
     }
     public List<TSach> XoaDL(TSach t) {
         List<TSach> data = new ArrayList<>();
@@ -36,11 +36,12 @@ public class DB_TraSach extends SQLiteOpenHelper {
                 TSach tSach = new TSach();
                 tSach.setMaMS(cursor.getString(0));
                 tSach.setTenDG(cursor.getString(1));
-                tSach.setMaThe(cursor.getString(2));
-                tSach.setNgayDT(cursor.getString(3));
-                tSach.setNgayTT(cursor.getString(4));
-                tSach.setMaSach(cursor.getString(5));
-                tSach.setTinhTS(cursor.getString(6));
+                tSach.setTenSach(cursor.getString(2));
+                tSach.setMaThe(cursor.getString(3));
+                tSach.setNgayDT(cursor.getString(4));
+                tSach.setNgayTT(cursor.getString(5));
+                tSach.setMaSach(cursor.getString(6));
+                tSach.setTinhTS(cursor.getString(7));
 
                 data.remove(tSach);
             } while (cursor.moveToNext());
@@ -63,11 +64,12 @@ public class DB_TraSach extends SQLiteOpenHelper {
                 TSach tSach = new TSach();
                 tSach.setMaMS(cursor.getString(0));
                 tSach.setTenDG(cursor.getString(1));
-                tSach.setMaThe(cursor.getString(2));
-                tSach.setNgayDT(cursor.getString(3));
-                tSach.setNgayTT(cursor.getString(4));
-                tSach.setMaSach(cursor.getString(5));
-                tSach.setTinhTS(cursor.getString(6));
+                tSach.setTenSach(cursor.getString(2));
+                tSach.setMaThe(cursor.getString(3));
+                tSach.setNgayDT(cursor.getString(4));
+                tSach.setNgayTT(cursor.getString(5));
+                tSach.setMaSach(cursor.getString(6));
+                tSach.setTinhTS(cursor.getString(7));
 
                 data.add(tSach);
             } while (cursor.moveToNext());
@@ -90,11 +92,12 @@ public class DB_TraSach extends SQLiteOpenHelper {
                 TSach tSach = new TSach();
                 tSach.setMaMS(cursor.getString(0));
                 tSach.setTenDG(cursor.getString(1));
-                tSach.setMaThe(cursor.getString(2));
-                tSach.setNgayDT(cursor.getString(3));
-                tSach.setNgayTT(cursor.getString(4));
-                tSach.setMaSach(cursor.getString(5));
-                tSach.setTinhTS(cursor.getString(6));
+                tSach.setTenSach(cursor.getString(2));
+                tSach.setMaThe(cursor.getString(3));
+                tSach.setNgayDT(cursor.getString(4));
+                tSach.setNgayTT(cursor.getString(5));
+                tSach.setMaSach(cursor.getString(6));
+                tSach.setTinhTS(cursor.getString(7));
 
                 data.add(tSach);
             } while (cursor.moveToNext());

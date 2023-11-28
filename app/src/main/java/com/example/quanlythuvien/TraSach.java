@@ -20,6 +20,7 @@ public class TraSach extends AppCompatActivity {
     EditText
             edtTenDG,
             edtMaThe,
+            edtTenSach,
             edtNgayDT,
             edtNgayTT,
             edtMaSach;
@@ -53,6 +54,7 @@ public class TraSach extends AppCompatActivity {
         TSach tSach = (TSach) getIntent().getSerializableExtra("item");
         tvMaMS.setText(tSach.getMaMS());
         edtTenDG.setText(tSach.getTenDG());
+        edtTenSach.setText(tSach.getTenSach());
         edtMaThe.setText(tSach.getMaThe());
         edtNgayDT.setText(tSach.getNgayDT());
         edtNgayTT.setText(tSach.getNgayTT());
@@ -79,6 +81,7 @@ public class TraSach extends AppCompatActivity {
             public void onClick(View view) {
                 item.setMaMS(tvMaMS.getText().toString());
                 item.setTenDG(edtTenDG.getText().toString());
+                item.setTenSach(edtTenSach.getText().toString());
                 item.setMaThe(edtMaThe.getText().toString());
                 item.setNgayDT(edtNgayDT.getText().toString());
                 item.setNgayTT(edtNgayTT.getText().toString());
@@ -107,6 +110,7 @@ public class TraSach extends AppCompatActivity {
                 // LÀm mới sau khi xóa
                 tvMaMS.setText("");
                 edtTenDG.setText("");
+                edtTenSach.setText("");
                 edtMaThe.setText("");
                 edtNgayDT.setText("");
                 edtNgayTT.setText("");
@@ -156,6 +160,7 @@ public class TraSach extends AppCompatActivity {
         btnXoa = findViewById(R.id.btnXoa);
         btnDanhSach = findViewById(R.id.btnDanhSach);
         btnLichSu = findViewById(R.id.btnLichSu);
+        edtTenSach = findViewById(R.id.edtTenSach);
     }
 }
 

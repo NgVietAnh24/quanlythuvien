@@ -1,5 +1,6 @@
 package com.example.quanlythuvien;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,15 +16,15 @@ public class DB_Sach extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbSach(masach text, tensach text, sotrang text, soluong text, giasach text, tacgia text, tennxb text, tennv text, namxb text)";
+        String sql = "Create table tbSach(masach text, tensach text, sotrang text, soluong text, giasach text, tacgia text, tinhts text, tennxb text, tennv text, namxb text)";
         sqLiteDatabase.execSQL(sql);
 
     }
 
     public void ThemDl(Sach s) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "insert into tbSach values(?,?,?,?,?,?,?,?,?)";
-        sqLiteDatabase.execSQL(sql, new String[]{s.getMaSach(), s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTenNXB(), s.getNhanVien(), s.getNamXB()});
+        String sql = "insert into tbSach values(?,?,?,?,?,?,?,?,?,?)";
+        sqLiteDatabase.execSQL(sql, new String[]{s.getMaSach(), s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTinhTS(), s.getTenNXB(), s.getNhanVien(), s.getNamXB()});
     }
 
     public void XoaDl(Sach s) {
@@ -34,8 +35,8 @@ public class DB_Sach extends SQLiteOpenHelper {
 
     public void SuaDl(Sach s) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "Update tbSach set tensach=?, sotrang=?, soluong=?, giasach=?, tacgia=?,tennxb=?, tennv = ?, namxb=? where masach=?  ";
-        sqLiteDatabase.execSQL(sql, new String[]{s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTenNXB(), s.getNhanVien(), s.getNamXB(), s.getMaSach()});
+        String sql = "Update tbSach set tensach=?, sotrang=?, soluong=?, giasach=?, tacgia=?,tinhts = ? ,tennxb=?, tennv = ?, namxb=? where masach=?  ";
+        sqLiteDatabase.execSQL(sql, new String[]{s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTinhTS(), s.getTenNXB(), s.getNhanVien(), s.getNamXB(), s.getMaSach()});
     }
 
     public List<Sach> TimDLTheoTen(Sach s) {
@@ -80,29 +81,30 @@ public class DB_Sach extends SQLiteOpenHelper {
                 sach.setSoLuong(cursor.getString(3));
                 sach.setGiaSach(cursor.getString(4));
                 sach.setTacGia(cursor.getString(5));
-                sach.setTenNXB(cursor.getString(6));
-                sach.setNhanVien(cursor.getString(7));
-                sach.setNamXB(cursor.getString(8));
+                sach.setTinhTS(cursor.getString(6));
+                sach.setTenNXB(cursor.getString(7));
+                sach.setNhanVien(cursor.getString(8));
+                sach.setNamXB(cursor.getString(9));
                 data.add(sach);
             } while (cursor.moveToNext());
         }
         return data;
     }
 
-    // Thống kê số lượng sách cũ
-//    @SuppressLint("Range")
-//    public int getCountSachCu() {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbSach WHERE namxb < '2022-04-10'", null);
-//
-//        int count = 0;
-//        if (cursor.moveToFirst()) {
-//            count = cursor.getInt(cursor.getColumnIndex("total"));
-//        }
-//
-//        cursor.close();
-//        return count;
-//    }
+//     Thống kê số lượng sách cũ
+    @SuppressLint("Range")
+    public int getCountSachCu() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbSach WHERE tinhts == 'Cũ'", null);
+
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(cursor.getColumnIndex("total"));
+        }
+
+        cursor.close();
+        return count;
+    }
 //    public int getCountSachCu() {
 //        SQLiteDatabase db = this.getReadableDatabase();
 //        String query = "SELECT COUNT(*) FROM tbSach WHERE isNew = 0";
@@ -117,19 +119,19 @@ public class DB_Sach extends SQLiteOpenHelper {
 //        return count;
 //    }
 
-    //    @SuppressLint("Range")
-//    public int getCountSachMoi() {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbTSach WHERE namxb > '2022-04-10'", null);
-//
-//        int count = 0;
-//        if (cursor.moveToFirst()) {
-//            count = cursor.getInt(cursor.getColumnIndex("total"));
-//        }
-//
-//        cursor.close();
-//        return count;
-//    }
+        @SuppressLint("Range")
+    public int getCountSachMoi() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbSach WHERE tinhts == 'Mới'", null);
+
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(cursor.getColumnIndex("total"));
+        }
+
+        cursor.close();
+        return count;
+    }
 // Phương thức để đếm số lượng sách mới
 //    public int getCountSachMoi() {
 //        SQLiteDatabase db = this.getReadableDatabase();
@@ -144,7 +146,6 @@ public class DB_Sach extends SQLiteOpenHelper {
 //        cursor.close();
 //        return count;
 //    }
-
 
 
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

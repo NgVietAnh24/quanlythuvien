@@ -19,6 +19,7 @@ public class MuonSach extends AppCompatActivity {
     EditText
             edtTenDG,
             edtMaThe,
+    edtTenSach,
             edtNgayDT,
             edtNgayTT,
             edtMaSach,
@@ -75,10 +76,44 @@ public class MuonSach extends AppCompatActivity {
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                for (TSach item : MuonSach.data_ts) {
-//                    if (item.getMaMS().equals(item.getMaMS())) {
+                if (edtMaSach.getText().length() <= 0) {
+                    edtMaSach.setError("Nhập mã sách !!!");
+                    Toast.makeText(MuonSach.this, "Chưa nhập mã sách", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (edtTenSach.getText().length() <= 0) {
+                    edtTenSach.setError("Nhập tên sách !!!");
+                    Toast.makeText(MuonSach.this, "Chưa nhập tên sách", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (edtTenDG.getText().length() <= 0) {
+                    edtTenDG.setError("Nhập tên độc giả !!!");
+                    Toast.makeText(MuonSach.this, "Chưa nhập tên độc giả", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (edtMaThe.getText().length() <= 0) {
+                    edtMaThe.setError("Nhập mã thẻ !!!");
+                    Toast.makeText(MuonSach.this, "Chưa nhập mã thẻ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (edtNgayDT.getText().length() <= 0) {
+                    edtNgayDT.setError("Nhập ngày dự trả !!!");
+                    Toast.makeText(MuonSach.this, "Chưa nhập ngày dự trả", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (edtNgayTT.getText().length() <= 0) {
+                    edtNgayTT.setError("Nhập ngày thực trả !!!");
+                    Toast.makeText(MuonSach.this, "Chưa nhập ngày thực trả", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (edtMaSach.getText().length() <= 0) {
+                    edtMaSach.setError("Nhập mã sách!!!");
+                    Toast.makeText(MuonSach.this, "Chưa nhập mã sách", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 item.setMaMS(edtMaMS.getText().toString());
                 item.setTenDG(edtTenDG.getText().toString());
+                item.setTenSach(edtTenSach.getText().toString());
                 item.setMaThe(edtMaThe.getText().toString());
                 item.setNgayDT(edtNgayDT.getText().toString());
                 item.setNgayTT(edtNgayTT.getText().toString());
@@ -89,6 +124,7 @@ public class MuonSach extends AppCompatActivity {
                 // Làm mới sau khi mượn sách
                 edtMaMS.setText("");
                 edtTenDG.setText("");
+                edtTenSach.setText("");
                 edtMaThe.setText("");
                 edtNgayDT.setText("");
                 edtNgayTT.setText("");
@@ -128,6 +164,7 @@ public class MuonSach extends AppCompatActivity {
         edtMaThe = findViewById(R.id.edtMaThe);
         edtNgayDT = findViewById(R.id.edtNgayDT);
         edtNgayTT = findViewById(R.id.edtNgayTT);
+        edtTenSach = findViewById(R.id.edtTenSach);
         edtMaSach = findViewById(R.id.edtMaSach);
         spTinhTS = findViewById(R.id.spTinhTS);
         btnThem = findViewById(R.id.btnThem);
