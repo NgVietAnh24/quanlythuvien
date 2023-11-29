@@ -80,6 +80,16 @@
             android:exported="false">
 
         </activity>
+        <activity
+            android:name=".DanhSachThe"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".TheThuVien"
+            android:exported="false">
+
+        </activity>
     </application>
 
 </manifest>

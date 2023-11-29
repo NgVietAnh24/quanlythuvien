@@ -74,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ibtnThe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Chuyển màn hình thẻ thu viện
+                Intent intent = new Intent(MainActivity.this, TheThuVien.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setControl() {

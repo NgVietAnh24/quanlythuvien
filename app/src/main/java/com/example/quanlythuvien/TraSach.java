@@ -27,7 +27,6 @@ public class TraSach extends AppCompatActivity {
     TextView tvMaMS;
     Spinner spTinhTS;
     Button btnSua, btnXoa, btnDanhSach, btnLichSu;
-    List<TSach> data_s = new ArrayList<>();
     List<String> data_ts = new ArrayList<>();
     ArrayAdapter adapter_s;
 
