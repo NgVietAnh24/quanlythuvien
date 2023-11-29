@@ -2,6 +2,7 @@ package com.example.quanlythuvien;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -40,47 +41,36 @@ public class TheThuVien extends AppCompatActivity {
         db_theThuVien = new DB_TheThuVien(this);
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_t);
 
-//        TheTV theTV = (TheTV) getIntent().getSerializableExtra("item");
-////        imgView.setImageResource(R.drawable.placeholder_image);
-//        if(theTV != null) {
-//            edtHoTen.setText(theTV.getHoTen());
-//            edtMaThe.setText(theTV.getMaThe());
-//            if (theTV.getNgaySinh().equals("Nam")) {
-//                radNam.setChecked(true);
-//            } else {
-//                radNu.setChecked(true);
-//            }
-//            edtDiaChi.setText(theTV.getDiaChi());
-//            edtEmail.setText(theTV.getEmail());
-//            edtSoDT.setText(theTV.getSoDT());
-//        }else {
-//            Toast.makeText(TheThuVien.this,"AAAA",Toast.LENGTH_SHORT).show();
-//        }
+        TheTV theTV = (TheTV) getIntent().getSerializableExtra("item");
+            edtHoTen.setText(theTV.getHoTen());
+            edtMaThe.setText(theTV.getMaThe());
+            edtNgaySinh.setText(theTV.getNgaySinh());
+            if (radgGioiTinh.getCheckedRadioButtonId() == R.id.radNam) {
+                theTV.setGioiTinh("Nam");
+            }else if(radgGioiTinh.getCheckedRadioButtonId() == R.id.radNu){
+                theTV.setGioiTinh("Nữ");
+            }
+            edtDiaChi.setText(theTV.getDiaChi());
+            edtEmail.setText(theTV.getEmail());
+            edtSoDT.setText(theTV.getSoDT());
+
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TheTV theTV = new TheTV();
-//                String imagePath = theTV.getHinhNV();
-//                if (imagePath != null) {
-//                    File imgFile = new File(imagePath);
-//                    if (imgFile.exists()) {
-//                        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-//                        imgView.setImageBitmap(myBitmap);
-//                    }
-//                }
-//                theTV.setHinhNV(imgView.getResources().toString());
                 theTV.setHoTen(edtHoTen.getText().toString());
                 theTV.setMaThe(edtMaThe.getText().toString());
                 theTV.setNgaySinh(edtNgaySinh.getText().toString());
                 if (radgGioiTinh.getCheckedRadioButtonId() == R.id.radNam) {
-                    theTV.setNgaySinh("Nam");
+                    theTV.setGioiTinh("Nam");
                 }else if(radgGioiTinh.getCheckedRadioButtonId() == R.id.radNu){
-                    theTV.setNgaySinh("Nữ");
+                    theTV.setGioiTinh("Nữ");
                 }
                 theTV.setDiaChi(edtDiaChi.getText().toString());
                 theTV.setEmail(edtEmail.getText().toString());
                 theTV.setSoDT(edtSoDT.getText().toString());
                 db_theThuVien.ThemDl(theTV);
+                Log.d("AAA", "lỗi:" + theTV);
                 Toast.makeText(TheThuVien.this,"Lưu thành công", Toast.LENGTH_SHORT).show();
             }
         });
@@ -166,7 +156,6 @@ public class TheThuVien extends AppCompatActivity {
         btnDanhSach = findViewById(R.id.btnDanhSach);
         edtNgaySinh = findViewById(R.id.edtNgaySinh);
         radgGioiTinh = findViewById(R.id.radioGroup);
-        btnUpLoad = findViewById(R.id.btnUpload);
 //        imgView = findViewById(R.id.imageView);
         radNam = findViewById(R.id.radNam);
         radNu = findViewById(R.id.radNu);

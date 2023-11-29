@@ -82,14 +82,13 @@ public class TheTV implements Serializable {
 
     @Override
     public String toString() {
-        return "TheTV{" +
-                ", hoTen='" + hoTen + '\'' +
-                ", maThe='" + maThe + '\'' +
-                ", ngaySinh='" + ngaySinh + '\'' +
+        return
+                "Họ tên: " + hoTen + "\n" +
+                "Mã thẻ: " + maThe + "\n" +
+                "Ngày sinh: " + ngaySinh + "\n" +
                 "Giới tính: "+gioiTinh+"\n"+
-                ", diaChi='" + diaChi + '\'' +
-                ", email='" + email + '\'' +
-                ", soDT='" + soDT + '\'' +
-                '}';
+                "Địa chỉ" + diaChi + "\n" +
+                "Email: " + email + "\n" +
+                "Số đt: " + soDT + "\n";
     }
 }

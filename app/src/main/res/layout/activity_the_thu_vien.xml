@@ -27,13 +27,6 @@
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder_image" />
 
-        <Button
-            android:id="@+id/btnUpload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:backgroundTint="#2196F3"
-            android:text="Chọn ảnh" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

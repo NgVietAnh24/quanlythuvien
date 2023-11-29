@@ -39,14 +39,6 @@ public class Adapter_TheTV extends ArrayAdapter {
         TextView tvHoTen = convertView.findViewById(R.id.tvHoTen);
         TextView tvMaThe = convertView.findViewById(R.id.tvMaThe);
         TheTV theTV = data.get(position);
-//        String imagePath = theTV.getHinhNV();
-//        if (imagePath != null) {
-//            File imgFile = new File(imagePath);
-//            if (imgFile.exists()) {
-//                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-//                ivHinh.setImageBitmap(myBitmap);
-//            }
-//        }
             ivHinh.setImageResource(R.drawable.placeholder_image);
             tvHoTen.setText(theTV.getHoTen());
             tvMaThe.setText(theTV.getMaThe());
