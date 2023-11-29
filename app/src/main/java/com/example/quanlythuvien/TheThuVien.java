@@ -41,18 +41,18 @@ public class TheThuVien extends AppCompatActivity {
         db_theThuVien = new DB_TheThuVien(this);
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_t);
 
-        TheTV theTV = (TheTV) getIntent().getSerializableExtra("item");
-            edtHoTen.setText(theTV.getHoTen());
-            edtMaThe.setText(theTV.getMaThe());
-            edtNgaySinh.setText(theTV.getNgaySinh());
-            if (radgGioiTinh.getCheckedRadioButtonId() == R.id.radNam) {
-                theTV.setGioiTinh("Nam");
-            }else if(radgGioiTinh.getCheckedRadioButtonId() == R.id.radNu){
-                theTV.setGioiTinh("Nữ");
-            }
-            edtDiaChi.setText(theTV.getDiaChi());
-            edtEmail.setText(theTV.getEmail());
-            edtSoDT.setText(theTV.getSoDT());
+//        TheTV theTV = (TheTV) getIntent().getSerializableExtra("item");
+//            edtHoTen.setText(theTV.getHoTen());
+//            edtMaThe.setText(theTV.getMaThe());
+//            edtNgaySinh.setText(theTV.getNgaySinh());
+//            if (radgGioiTinh.getCheckedRadioButtonId() == R.id.radNam) {
+//                theTV.setGioiTinh("Nam");
+//            }else if(radgGioiTinh.getCheckedRadioButtonId() == R.id.radNu){
+//                theTV.setGioiTinh("Nữ");
+//            }
+//            edtDiaChi.setText(theTV.getDiaChi());
+//            edtEmail.setText(theTV.getEmail());
+//            edtSoDT.setText(theTV.getSoDT());
 
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +83,29 @@ public class TheThuVien extends AppCompatActivity {
                 db_theThuVien.XoaDL(t);
                 arrayAdapter.notifyDataSetChanged();
 
+            }
+        });
+        btnSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TheTV theTV = new TheTV();
+                theTV.setHoTen(edtHoTen.getText().toString());
+                theTV.setMaThe(edtMaThe.getText().toString());
+                theTV.setNgaySinh(edtNgaySinh.getText().toString());
+                if (radgGioiTinh.getCheckedRadioButtonId() == R.id.radNam) {
+                    theTV.setGioiTinh("Nam");
+                }else if(radgGioiTinh.getCheckedRadioButtonId() == R.id.radNu){
+                    theTV.setGioiTinh("Nữ");
+                }
+                theTV.setDiaChi(edtDiaChi.getText().toString());
+                theTV.setEmail(edtEmail.getText().toString());
+                theTV.setSoDT(edtSoDT.getText().toString());
+                DanhSachThe.data_t.clear();
+                DanhSachThe.data_t.addAll(db_theThuVien.SuaDL(theTV));
+                arrayAdapter.notifyDataSetChanged();
+
+                Log.d("AAA", "lỗi:" + theTV);
+                Toast.makeText(TheThuVien.this,"Lưu thành công", Toast.LENGTH_SHORT).show();
             }
         });
         btnDanhSach.setOnClickListener(new View.OnClickListener() {
