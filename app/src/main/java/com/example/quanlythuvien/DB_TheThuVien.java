@@ -15,15 +15,15 @@ public class DB_TheThuVien extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbTheTV(hoten text, mathe text, ngaysinh text, diachi text, email text, sodt text)";
+        String sql = "Create table tbTheTV(hoten text, mathe text, ngaysinh text,gioitinh text, diachi text, email text, sodt text)";
         sqLiteDatabase.execSQL(sql);
 
     }
 
     public void ThemDl(TheTV theTV) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "insert into tbTheTV values(?,?,?,?,?,?)";
-        sqLiteDatabase.execSQL(sql, new String[]{theTV.getHoTen(), theTV.getMaThe(), theTV.getNgaySinh(), theTV.getDiaChi(), theTV.getEmail(), theTV.getSoDT()});
+        String sql = "insert into tbTheTV values(?,?,?,?,?,?,?)";
+        sqLiteDatabase.execSQL(sql, new String[]{theTV.getHoTen(), theTV.getMaThe(), theTV.getNgaySinh(),theTV.getGioiTinh(), theTV.getDiaChi(), theTV.getEmail(), theTV.getSoDT()});
     }
     public List<TheTV> XoaDL(TheTV theTV) {
         List<TheTV> data = new ArrayList<>();
@@ -37,9 +37,10 @@ public class DB_TheThuVien extends SQLiteOpenHelper {
                 t.setHoTen(cursor.getString(0));
                 t.setMaThe(cursor.getString(1));
                 t.setNgaySinh(cursor.getString(2));
-                t.setDiaChi(cursor.getString(3));
-                t.setEmail(cursor.getString(4));
-                t.setSoDT(cursor.getString(5));
+                t.setGioiTinh(cursor.getString(3));
+                t.setDiaChi(cursor.getString(4));
+                t.setEmail(cursor.getString(5));
+                t.setSoDT(cursor.getString(6));
                 data.remove(t);
             } while (cursor.moveToNext());
 
@@ -62,9 +63,10 @@ public class DB_TheThuVien extends SQLiteOpenHelper {
                 t.setHoTen(cursor.getString(0));
                 t.setMaThe(cursor.getString(1));
                 t.setNgaySinh(cursor.getString(2));
-                t.setDiaChi(cursor.getString(3));
-                t.setEmail(cursor.getString(4));
-                t.setSoDT(cursor.getString(5));
+                t.setGioiTinh(cursor.getString(3));
+                t.setDiaChi(cursor.getString(4));
+                t.setEmail(cursor.getString(5));
+                t.setSoDT(cursor.getString(6));
 
                 data.add(t);
             } while (cursor.moveToNext());
@@ -88,9 +90,10 @@ public class DB_TheThuVien extends SQLiteOpenHelper {
                 t.setHoTen(cursor.getString(0));
                 t.setMaThe(cursor.getString(1));
                 t.setNgaySinh(cursor.getString(2));
-                t.setDiaChi(cursor.getString(3));
-                t.setEmail(cursor.getString(4));
-                t.setSoDT(cursor.getString(5));
+                t.setGioiTinh(cursor.getString(3));
+                t.setDiaChi(cursor.getString(4));
+                t.setEmail(cursor.getString(5));
+                t.setSoDT(cursor.getString(6));
 
                 data.add(t);
             } while (cursor.moveToNext());

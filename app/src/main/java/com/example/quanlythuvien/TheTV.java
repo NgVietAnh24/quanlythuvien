@@ -3,11 +3,11 @@ package com.example.quanlythuvien;
 import java.io.Serializable;
 
 public class TheTV implements Serializable {
-    String hoTen, maThe,ngaySinh, diaChi, email, soDT;
+    String hoTen, maThe,ngaySinh,gioiTinh, diaChi, email, soDT;
     public TheTV(){}
 
-    public TheTV( String hoTen, String maThe, String ngaySinh, String diaChi, String email, String soDT) {
-//        this.hinhNV = hinhNV;
+    public TheTV( String gioiTinh, String hoTen, String maThe, String ngaySinh, String diaChi, String email, String soDT) {
+        this.gioiTinh = gioiTinh;
         this.hoTen = hoTen;
         this.maThe = maThe;
         this.ngaySinh = ngaySinh;
@@ -71,12 +71,22 @@ public class TheTV implements Serializable {
     public void setSoDT(String soDT) {
         this.soDT = soDT;
     }
+
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
     @Override
     public String toString() {
         return "TheTV{" +
                 ", hoTen='" + hoTen + '\'' +
                 ", maThe='" + maThe + '\'' +
                 ", ngaySinh='" + ngaySinh + '\'' +
+                "Giới tính: "+gioiTinh+"\n"+
                 ", diaChi='" + diaChi + '\'' +
                 ", email='" + email + '\'' +
                 ", soDT='" + soDT + '\'' +
