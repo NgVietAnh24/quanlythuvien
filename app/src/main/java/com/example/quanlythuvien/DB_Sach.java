@@ -16,27 +16,27 @@ public class DB_Sach extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbSach(masach text, tensach text, sotrang text, soluong text, giasach text, tacgia text, tinhts text, tennxb text, tennv text, namxb text)";
+        String sql = "Create table tbSach(hinh integer,masach text, tensach text,  soluong text, giasach text, tinhts text, namxb text)";
         sqLiteDatabase.execSQL(sql);
 
     }
 
     public void ThemDl(Sach s) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "insert into tbSach values(?,?,?,?,?,?,?,?,?,?)";
-        sqLiteDatabase.execSQL(sql, new String[]{s.getMaSach(), s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTinhTS(), s.getTenNXB(), s.getNhanVien(), s.getNamXB()});
+        String sql = "insert into tbSach values(?,?,?,?,?,?,?)";
+        sqLiteDatabase.execSQL(sql, new Object[]{s.getImgPath(),s.getMaSach(), s.getTenSach(), s.getSoLuong(), s.getGiaSach(), s.getTinhTS(), s.getNamXB()});
     }
 
     public void XoaDl(Sach s) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String sql = "Delete from tbSach where masach=?";
-        sqLiteDatabase.execSQL(sql, new String[]{s.getMaSach()});
+        sqLiteDatabase.execSQL(sql, new Object[]{s.getMaSach()});
     }
 
     public void SuaDl(Sach s) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "Update tbSach set tensach=?, sotrang=?, soluong=?, giasach=?, tacgia=?,tinhts = ? ,tennxb=?, tennv = ?, namxb=? where masach=?  ";
-        sqLiteDatabase.execSQL(sql, new String[]{s.getTenSach(), s.getSoTrang(), s.getSoLuong(), s.getGiaSach(), s.getTacGia(), s.getTinhTS(), s.getTenNXB(), s.getNhanVien(), s.getNamXB(), s.getMaSach()});
+        String sql = "Update tbSach set hinh = ?, tensach=?,  soluong=?, giasach=?,tinhts = ? , namxb=? where masach=?  ";
+        sqLiteDatabase.execSQL(sql, new  Object[]{s.getImgPath(),s.getTenSach(), s.getSoLuong(), s.getGiaSach(), s.getTinhTS(), s.getNamXB(), s.getMaSach()});
     }
 
     public List<Sach> TimDLTheoTen(Sach s) {
@@ -48,15 +48,13 @@ public class DB_Sach extends SQLiteOpenHelper {
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 Sach sach = new Sach();
-                sach.setMaSach(cursor.getString(0));
-                sach.setTenSach(cursor.getString(1));
-                sach.setSoTrang(cursor.getString(2));
+                sach.setImgPath(cursor.getInt(0));
+                sach.setMaSach(cursor.getString(1));
+                sach.setTenSach(cursor.getString(2));
                 sach.setSoLuong(cursor.getString(3));
                 sach.setGiaSach(cursor.getString(4));
-                sach.setTacGia(cursor.getString(5));
-                sach.setTenNXB(cursor.getString(6));
-                sach.setNhanVien(cursor.getString(7));
-                sach.setNamXB(cursor.getString(8));
+                sach.setTinhTS(cursor.getString(5));
+                sach.setNamXB(cursor.getString(6));
                 data.add(sach);
             } while (cursor.moveToNext());
 
@@ -75,16 +73,12 @@ public class DB_Sach extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Sach sach = new Sach();
-                sach.setMaSach(cursor.getString(0));
-                sach.setTenSach(cursor.getString(1));
-                sach.setSoTrang(cursor.getString(2));
+                sach.setImgPath(cursor.getInt(0));
+                sach.setMaSach(cursor.getString(1));
+                sach.setTenSach(cursor.getString(2));
                 sach.setSoLuong(cursor.getString(3));
                 sach.setGiaSach(cursor.getString(4));
-                sach.setTacGia(cursor.getString(5));
-                sach.setTinhTS(cursor.getString(6));
-                sach.setTenNXB(cursor.getString(7));
-                sach.setNhanVien(cursor.getString(8));
-                sach.setNamXB(cursor.getString(9));
+                sach.setNamXB(cursor.getString(5));
                 data.add(sach);
             } while (cursor.moveToNext());
         }

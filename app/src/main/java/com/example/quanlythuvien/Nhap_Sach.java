@@ -78,7 +78,7 @@ public class Nhap_Sach extends AppCompatActivity {
         spTenNXB.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                sachs.setTenNXB(spTenNXB.getSelectedItem().toString());
+//                sachs.setTenNXB(spTenNXB.getSelectedItem().toString());
             }
 
             @Override
@@ -90,7 +90,7 @@ public class Nhap_Sach extends AppCompatActivity {
         spNV.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                sachs.setNhanVien(spNV.getSelectedItem().toString());
+//                sachs.setNhanVien(spNV.getSelectedItem().toString());
             }
 
             @Override
@@ -139,10 +139,10 @@ public class Nhap_Sach extends AppCompatActivity {
 
                 sachs.setMaSach(edtMaSach.getText().toString());
                 sachs.setTenSach(edtTenSach.getText().toString());
-                sachs.setSoTrang(edtSoTrang.getText().toString());
+//                sachs.setSoTrang(edtSoTrang.getText().toString());
                 sachs.setSoLuong(edtSoLuong.getText().toString());
                 sachs.setGiaSach(edtGia.getText().toString());
-                sachs.setTacGia(edtTacGia.getText().toString());
+//                sachs.setTacGia(edtTacGia.getText().toString());
                 sachs.setNamXB(edtNXB.getText().toString());
                 dbSach.ThemDl(sachs);
                 Toast.makeText(Nhap_Sach.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
@@ -175,13 +175,13 @@ public class Nhap_Sach extends AppCompatActivity {
                 Sach sach = new Sach();
                 sach.setMaSach(edtMaSach.getText().toString());
                 sach.setTenSach(edtTenSach.getText().toString());
-                sach.setSoTrang(edtSoTrang.getText().toString());
-                sach.setSoLuong(edtSoLuong.getText().toString());
-                sach.setGiaSach(edtGia.getText().toString());
-                sach.setTacGia(edtTacGia.getText().toString());
-                sach.setTinhTS(spTinhTS.getSelectedItem().toString());
-                sach.setTenNXB(spTenNXB.getSelectedItem().toString());
-                sach.setNhanVien(spNV.getSelectedItem().toString());
+//                sach.setSoTrang(edtSoTrang.getText().toString());
+//                sach.setSoLuong(edtSoLuong.getText().toString());
+//                sach.setGiaSach(edtGia.getText().toString());
+//                sach.setTacGia(edtTacGia.getText().toString());
+//                sach.setTinhTS(spTinhTS.getSelectedItem().toString());
+//                sach.setTenNXB(spTenNXB.getSelectedItem().toString());
+//                sach.setNhanVien(spNV.getSelectedItem().toString());
                 sach.setNamXB(edtNXB.getText().toString());
 
                 dbSach.SuaDl(sach);
@@ -194,10 +194,10 @@ public class Nhap_Sach extends AppCompatActivity {
                 Sach sach = data_s.get(i);
                 edtMaSach.setText(sach.getMaSach());
                 edtTenSach.setText(sach.getTenSach());
-                edtSoTrang.setText(sach.getSoTrang());
-                edtSoLuong.setText(sach.getSoLuong());
-                edtGia.setText(sach.getGiaSach());
-                edtTacGia.setText(sach.getTacGia());
+//                edtSoTrang.setText(sach.getSoTrang());
+//                edtSoLuong.setText(sach.getSoLuong());
+//                edtGia.setText(sach.getGiaSach());
+//                edtTacGia.setText(sach.getTacGia());
                 edtNXB.setText(sach.getNamXB());
             }
         });

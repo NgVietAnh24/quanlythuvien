@@ -32,8 +32,8 @@ public class Danh_Sach_Tra extends AppCompatActivity {
 
     private void setEvent() {
 //        KhoiTao();
-        adapter_Sach = new AdapterSach(this, R.layout.activity_sach_item, data_ts);
-        lvDanhSach.setAdapter(adapter_Sach);
+//        adapter_Sach = new AdapterSach(this, R.layout.activity_sach_item, data_ts);
+//        lvDanhSach.setAdapter(adapter_Sach);
 
         lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class Danh_Sach_Tra extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 data_ts.remove(i);
-                adapter_Sach.updateData(data_ts);
+//                adapter_Sach.updateData(data_ts);
                 return false;
             }
         });

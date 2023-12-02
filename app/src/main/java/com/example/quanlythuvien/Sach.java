@@ -1,30 +1,28 @@
 package com.example.quanlythuvien;
 
 public class Sach {
-    String MaSach, TenSach, SoTrang, SoLuong, GiaSach, TinhTS, TacGia, TenNXB, NhanVien, NamXB;
+    int imgPath;
+    String MaSach, TenSach, SoLuong, GiaSach, TinhTS, NamXB;
 
     public Sach() {
     }
 
-    public Sach(String maSach, String tenSach, String soTrang, String soLuong, String giaSach, String tacGia, String tinhTS, String tenNXB, String nhanVien, String namXB) {
-        MaSach = maSach;
+    public Sach(int imgPath, String maSach, String tenSach, String soLuong, String giaSach, String tinhTS, String namXB) {
+        this.imgPath = imgPath;
+        MaSach = maSach = "MS" + 1;
         TenSach = tenSach;
-        SoTrang = soTrang;
         SoLuong = soLuong;
         GiaSach = giaSach;
         TinhTS = tinhTS;
-        TacGia = tacGia;
-        TenNXB = tenNXB;
-        NhanVien = nhanVien;
         NamXB = namXB;
     }
 
-    public String getTinhTS() {
-        return TinhTS;
+    public int getImgPath() {
+        return imgPath;
     }
 
-    public void setTinhTS(String tinhTS) {
-        TinhTS = tinhTS;
+    public void setImgPath(int imgPath) {
+        this.imgPath = imgPath;
     }
 
     public String getMaSach() {
@@ -43,14 +41,6 @@ public class Sach {
         TenSach = tenSach;
     }
 
-    public String getSoTrang() {
-        return SoTrang;
-    }
-
-    public void setSoTrang(String soTrang) {
-        SoTrang = soTrang;
-    }
-
     public String getSoLuong() {
         return SoLuong;
     }
@@ -67,28 +57,12 @@ public class Sach {
         GiaSach = giaSach;
     }
 
-    public String getTacGia() {
-        return TacGia;
+    public String getTinhTS() {
+        return TinhTS;
     }
 
-    public void setTacGia(String tacGia) {
-        TacGia = tacGia;
-    }
-
-    public String getTenNXB() {
-        return TenNXB;
-    }
-
-    public void setTenNXB(String tenNXB) {
-        TenNXB = tenNXB;
-    }
-
-    public String getNhanVien() {
-        return NhanVien;
-    }
-
-    public void setNhanVien(String nhanVien) {
-        NhanVien = nhanVien;
+    public void setTinhTS(String tinhTS) {
+        TinhTS = tinhTS;
     }
 
     public String getNamXB() {
@@ -97,20 +71,5 @@ public class Sach {
 
     public void setNamXB(String namXB) {
         NamXB = namXB;
-    }
-
-    @Override
-    public String toString() {
-        return
-                "Mã sách: " + MaSach + '\n' +
-                        "Tên sách: " + TenSach + '\n' +
-                        "Số trang: " + SoTrang + '\n' +
-                        "Số lượng: " + SoLuong + '\n' +
-                        "Giá sách: " + GiaSach + '\n' +
-                        "Tác giả: " + TacGia + '\n' +
-                        "Tình trạng: "+ TinhTS + '\n' +
-                        "Tên NXB: " + TenNXB + '\n' +
-                        "Nhân viên: " + NhanVien + '\n' +
-                        "Năm xuất bản: " + NamXB + '\n';
     }
 }

@@ -28,8 +28,8 @@ public class LichSuTS extends AppCompatActivity {
 
     private void setEvent() {
 
-        adapter_ls = new AdapterSach(this, R.layout.activity_sach_item, data_ls);
-        lvLichSu.setAdapter(adapter_ls);
+//        adapter_ls = new AdapterSach(this, R.layout.activity_sach_item, data_ls);
+//        lvLichSu.setAdapter(adapter_ls);
 
 //        lvLichSu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
@@ -44,7 +44,7 @@ public class LichSuTS extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 data_ls.remove(i);
-                adapter_ls.updateData(data_ls);
+//                adapter_ls.updateData(data_ls);
                 return false;
             }
         });

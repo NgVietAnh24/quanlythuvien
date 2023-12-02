@@ -24,7 +24,7 @@ public class MuonSach extends AppCompatActivity {
             edtNgayTT,
             edtMaSach,
             edtMaMS;
-    Spinner spTinhTS;
+    static Spinner spTinhTS;
     Button btnThem, btnThoat, btnDanhSach;
     List<TSach> data_s = new ArrayList<>();
     List<String> data_ts = new ArrayList<>();

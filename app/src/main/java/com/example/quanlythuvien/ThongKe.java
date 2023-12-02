@@ -67,16 +67,16 @@ public class ThongKe extends AppCompatActivity {
                     // Kiểm tra xem Adapter có tồn tại không
                     if (LichSuTS.adapter_ls != null) {
                         // Lấy số lượng item trong Adapter (tức là số lượng item trong ListView)
-                        int itemCount = LichSuTS.adapter_ls.getCount();
-                        txtThongKe.setText("Số sách đã trả: " + itemCount);
+//                        int itemCount = LichSuTS.adapter_ls.getCount();
+//                        txtThongKe.setText("Số sách đã trả: " + itemCount);
                         arrayAdapter.notifyDataSetChanged();
                     }
                 } else if (selectItem.equals("Số sách đang mượn")) {
                     // Kiểm tra xem Adapter có tồn tại không
                     if (Danh_Sach_Tra.adapter_Sach != null) {
                         // Lấy số lượng item trong Adapter (tức là số lượng item trong ListView)
-                        int itemCount = Danh_Sach_Tra.adapter_Sach.getCount();
-                        txtThongKe.setText("Số sách đang mượn: " + itemCount);
+//                        int itemCount = Danh_Sach_Tra.adapter_Sach.getCount();
+//                        txtThongKe.setText("Số sách đang mượn: " + itemCount);
                         arrayAdapter.notifyDataSetChanged();
                     }
 
