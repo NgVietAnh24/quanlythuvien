@@ -92,32 +92,32 @@ public class DB_TraSach extends SQLiteOpenHelper {
         return data;
     }
 
-    public List<TSach> ThongKeMuonTheoThang(String ngayThangNam) {
-        List<TSach> data = new ArrayList<>();
-        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-
-        String sql = "SELECT tensach, COUNT(*) AS soluong " +
-                "FROM tbTSach " +
-                "WHERE SUBSTR(ngaym, 1, 7) = SUBSTR(?, 1, 7) " +
-                "GROUP BY tensach " +
-                "ORDER BY soluong DESC";
-
-        Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{ngayThangNam});
-
-        if (cursor.moveToFirst()) {
-            do {
-                TSach tSach = new TSach();
-                tSach.setTenSach(cursor.getString(cursor.getColumnIndex("tenSach")));
-                tSach.setSoLuong(cursor.getInt(cursor.getColumnIndex("SoLuongMuon")));
-                data.add(tSach);
-            } while (cursor.moveToNext());
-        }
-
-        // Đóng Cursor sau khi sử dụng
-        cursor.close();
-
-        return data;
-    }
+//    public List<TSach> ThongKeMuonTheoThang(String ngayThangNam) {
+//        List<TSach> data = new ArrayList<>();
+//        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+//
+//        String sql = "SELECT tensach, COUNT(*) AS soluong " +
+//                "FROM tbTSach " +
+//                "WHERE SUBSTR(ngaym, 1, 7) = SUBSTR(?, 1, 7) " +
+//                "GROUP BY tensach " +
+//                "ORDER BY soluong DESC";
+//
+//        Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{ngayThangNam});
+//
+//        if (cursor.moveToFirst()) {
+//            do {
+//                TSach tSach = new TSach();
+//                tSach.setTenSach(cursor.getString(cursor.getColumnIndex("tensach")-1));
+//                tSach.setSoLuong(cursor.getInt(cursor.getInt(Integer.parseInt("soluong"))));
+//                data.add(tSach);
+//            } while (cursor.moveToNext());
+//        }
+//
+//        // Đóng Cursor sau khi sử dụng
+//        cursor.close();
+//
+//        return data;
+//    }
 
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 

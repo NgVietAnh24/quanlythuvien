@@ -86,18 +86,23 @@ public class ThongKe extends AppCompatActivity {
                     if (Danh_Sach_Tra.list != null) {
                         TSach tSach = new TSach();
 
-                        // Assuming that ngayM is a Date object, you may want to format it before using it
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yyyy");
+                        // Format the date before using it in the query
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM"); // Adjust the format as needed
                         String formattedDate = dateFormat.format(tSach.ngayM);
 
                         // Get the item count for books borrowed in the given month
-                        String itemCount = dbTraSach.ThongKeMuonTheoThang(formattedDate);
+//                        List<TSach> resultList = dbTraSach.ThongKeMuonTheoThang(formattedDate);
 
-                        // Display the book borrowing statistics in a user-friendly message
-                        txtThongKe.setText("Số lượng sách mượn nhiều nhất trong tháng " + formattedDate + ": " + itemCount);
-
-                        // Assuming arrayAdapter is associated with a ListView, notify it of the data change
-                        arrayAdapter.notifyDataSetChanged();
+//                        if (!resultList.isEmpty()) {
+//                            // Assuming you want to display the information for the book with the highest borrowing count
+//                            TSach mostBorrowedBook = resultList.get(0);
+//
+//                            // Display the book borrowing statistics in the TextView
+//                            txtThongKe.setText("Số lượng sách mượn nhiều nhất trong tháng " + formattedDate + ": " + mostBorrowedBook.getSoLuong());
+//
+//                            // Notify the arrayAdapter if needed
+//                            arrayAdapter.notifyDataSetChanged();
+//                        }
                     }
                 }
             }
