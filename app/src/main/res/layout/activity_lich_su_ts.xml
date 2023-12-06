@@ -14,8 +14,8 @@
         android:text="Lịch Sử "
 
         android:textSize="40sp"/>
-    <ListView
-        android:id="@+id/lvLichSu"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvLichSu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

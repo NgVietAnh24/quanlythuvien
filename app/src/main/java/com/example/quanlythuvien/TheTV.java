@@ -3,26 +3,28 @@ package com.example.quanlythuvien;
 import java.io.Serializable;
 
 public class TheTV implements Serializable {
+    byte[] hinh;
     String hoTen, maThe,ngaySinh,gioiTinh, diaChi, email, soDT;
     public TheTV(){}
 
-    public TheTV( String gioiTinh, String hoTen, String maThe, String ngaySinh, String diaChi, String email, String soDT) {
-        this.gioiTinh = gioiTinh;
+    public TheTV(byte[] hinh, String hoTen, String maThe, String ngaySinh, String gioiTinh, String diaChi, String email, String soDT) {
+        this.hinh = hinh;
         this.hoTen = hoTen;
         this.maThe = maThe;
         this.ngaySinh = ngaySinh;
+        this.gioiTinh = gioiTinh;
         this.diaChi = diaChi;
         this.email = email;
         this.soDT = soDT;
     }
 
-//    public String getHinhNV() {
-//        return hinhNV;
-//    }
-//
-//    public void setHinhNV(String hinhNV) {
-//        this.hinhNV = hinhNV;
-//    }
+    public byte[] getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(byte[] hinh) {
+        this.hinh = hinh;
+    }
 
     public String getHoTen() {
         return hoTen;
@@ -48,6 +50,14 @@ public class TheTV implements Serializable {
         this.ngaySinh = ngaySinh;
     }
 
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
     public String getDiaChi() {
         return diaChi;
     }
@@ -70,25 +80,5 @@ public class TheTV implements Serializable {
 
     public void setSoDT(String soDT) {
         this.soDT = soDT;
-    }
-
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
-    @Override
-    public String toString() {
-        return
-                "Họ tên: " + hoTen + "\n" +
-                "Mã thẻ: " + maThe + "\n" +
-                "Ngày sinh: " + ngaySinh + "\n" +
-                "Giới tính: "+gioiTinh+"\n"+
-                "Địa chỉ" + diaChi + "\n" +
-                "Email: " + email + "\n" +
-                "Số đt: " + soDT + "\n";
     }
 }

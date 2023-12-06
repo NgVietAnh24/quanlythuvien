@@ -52,14 +52,14 @@
         android:layout_marginTop="10dp"
         android:gravity="center">
         <Button
-            android:id="@+id/btnSua"
+            android:id="@+id/btnSuaND"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="Sửa"
             android:backgroundTint="#2196F3"/>
         <Button
-            android:id="@+id/btnXoa"
+            android:id="@+id/btnXoaND"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"

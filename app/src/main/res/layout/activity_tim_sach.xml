@@ -39,8 +39,8 @@
         android:backgroundTint="#2196F3"
         android:text="Tìm" />
 
-    <ListView
-        android:id="@+id/lvThongTin"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvThongTin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

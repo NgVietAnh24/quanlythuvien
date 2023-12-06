@@ -1,28 +1,26 @@
 package com.example.quanlythuvien;
 
-public class Sach {
-    int imgPath;
-    String MaSach, TenSach, SoLuong, GiaSach, TinhTS, NamXB;
+import java.io.Serializable;
+
+public class Sach implements Serializable {
+
+    int SoLuong, NamXB;
+    byte[] Hinh;
+    double GiaSach;
+    String TenSach,MaSach, TinhTS;
 
     public Sach() {
     }
 
-    public Sach(int imgPath, String maSach, String tenSach, String soLuong, String giaSach, String tinhTS, String namXB) {
-        this.imgPath = imgPath;
-        MaSach = maSach = "MS" + 1;
+    public Sach( byte[] hinh,String maSach,String tenSach, int soLuong, double giaSach,  String tinhTS, int namXB) {
+        Hinh = hinh;
+        MaSach = maSach;
         TenSach = tenSach;
         SoLuong = soLuong;
         GiaSach = giaSach;
         TinhTS = tinhTS;
         NamXB = namXB;
-    }
 
-    public int getImgPath() {
-        return imgPath;
-    }
-
-    public void setImgPath(int imgPath) {
-        this.imgPath = imgPath;
     }
 
     public String getMaSach() {
@@ -33,28 +31,44 @@ public class Sach {
         MaSach = maSach;
     }
 
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        SoLuong = soLuong;
+    }
+
+    public int getNamXB() {
+        return NamXB;
+    }
+
+    public void setNamXB(int namXB) {
+        NamXB = namXB;
+    }
+
+    public byte[] getHinh() {
+        return Hinh;
+    }
+
+    public void setHinh(byte[] hinh) {
+        Hinh = hinh;
+    }
+
+    public double getGiaSach() {
+        return GiaSach;
+    }
+
+    public void setGiaSach(double giaSach) {
+        GiaSach = giaSach;
+    }
+
     public String getTenSach() {
         return TenSach;
     }
 
     public void setTenSach(String tenSach) {
         TenSach = tenSach;
-    }
-
-    public String getSoLuong() {
-        return SoLuong;
-    }
-
-    public void setSoLuong(String soLuong) {
-        SoLuong = soLuong;
-    }
-
-    public String getGiaSach() {
-        return GiaSach;
-    }
-
-    public void setGiaSach(String giaSach) {
-        GiaSach = giaSach;
     }
 
     public String getTinhTS() {
@@ -64,12 +78,6 @@ public class Sach {
     public void setTinhTS(String tinhTS) {
         TinhTS = tinhTS;
     }
-
-    public String getNamXB() {
-        return NamXB;
-    }
-
-    public void setNamXB(String namXB) {
-        NamXB = namXB;
-    }
 }
+
+

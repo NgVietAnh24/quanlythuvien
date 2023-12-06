@@ -5,70 +5,79 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Danh_Sach_Tra extends AppCompatActivity {
 
-    ListView lvDanhSach;
+    FloatingActionButton flThem;
 
-    static List<TSach> data_ts = new ArrayList<>();
-
-    static AdapterSach adapter_Sach;
+    RecyclerView rcvSach;
+    Adapter_TSach adapter_tSach;
+    static List<TSach> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ds_tra);
-        setControl();
+        Control();
         setEvent();
     }
 
     private void setEvent() {
-//        KhoiTao();
-//        adapter_Sach = new AdapterSach(this, R.layout.activity_sach_item, data_ts);
-//        lvDanhSach.setAdapter(adapter_Sach);
+        adapter_tSach = new Adapter_TSach();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rcvSach.setLayoutManager(linearLayoutManager);
 
-        lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        adapter_tSach.setData(getListSach(), Danh_Sach_Tra.this);
+        rcvSach.setAdapter(adapter_tSach);
+        flThem.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(Danh_Sach_Tra.this, TraSach.class);
-                intent.putExtra("item", data_ts.get(i));
+            public void onClick(View view) {
+                Intent intent = new Intent(Danh_Sach_Tra.this, Screen_Muon_Tra.class);
                 startActivity(intent);
+
+
             }
         });
-
-        lvDanhSach.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        rcvSach.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                data_ts.remove(i);
-//                adapter_Sach.updateData(data_ts);
-                return false;
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    flThem.hide();
+                } else {
+                    flThem.show();
+                }
+                super.onScrolled(recyclerView, dx, dy);
             }
         });
     }
-
-    private void setControl() {
-        lvDanhSach = findViewById(R.id.lvDanhSach);
+    private List<TSach> getListSach() {return list;}
+    private void Control() {
+        flThem = findViewById(R.id.flThem_dsTra);
+        rcvSach = findViewById(R.id.rcvDSTra);
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_manu, menu);
+        getMenuInflater().inflate(R.menu.menu_back, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.mnBack) {
-            onBackPressed();
+            Intent intent = new Intent(Danh_Sach_Tra.this, MainActivity.class);
+            startActivity(intent);
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

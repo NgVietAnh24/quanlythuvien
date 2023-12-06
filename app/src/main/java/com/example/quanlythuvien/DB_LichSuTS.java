@@ -15,15 +15,15 @@ public class DB_LichSuTS extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbLichSu(mams text, tendg text, mathe text, ngaydt text, ngaytt text, masach text, tinhts text)";
+        String sql = "Create table tbLichSu(mams text, tendg text,tensach text,hinh blob, mathe text,soluong integer,giasach integer, ngaydt text, ngaytt text, tinhts text, hientrang text)";
         sqLiteDatabase.execSQL(sql);
 
     }
 
     public void ThemDl(TSach tSach) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "insert into tbLichSu values(?,?,?,?,?,?,?)";
-        sqLiteDatabase.execSQL(sql, new String[]{tSach.getMaMS(), tSach.getTenDG(), tSach.getMaThe(), tSach.getNgayDT(), tSach.getNgayTT(), tSach.getMaSach(), tSach.getTinhTS()});
+        String sql = "insert into tbLichSu values(?,?,?,?,?,?,?,?,?,?,?)";
+        sqLiteDatabase.execSQL(sql, new Object[]{tSach.getMaMS(), tSach.getTenDG(), tSach.getTenSach(),tSach.getHinh(), tSach.getMaThe(), tSach.getSoLuong(),tSach.getGiaSach() ,tSach.getNgayDT(), tSach.getNgayTT(), tSach.getTinhTS(), tSach.getSpHienTrang()});
     }
     public List<TSach> XoaDL(TSach t) {
         List<TSach> data = new ArrayList<>();
@@ -36,12 +36,15 @@ public class DB_LichSuTS extends SQLiteOpenHelper {
                 TSach tSach = new TSach();
                 tSach.setMaMS(cursor.getString(0));
                 tSach.setTenDG(cursor.getString(1));
-                tSach.setMaThe(cursor.getString(2));
-                tSach.setNgayDT(cursor.getString(3));
-                tSach.setNgayTT(cursor.getString(4));
-                tSach.setMaSach(cursor.getString(5));
-                tSach.setTinhTS(cursor.getString(6));
-
+                tSach.setTenSach(cursor.getString(2));
+                tSach.setHinh(cursor.getBlob(3));
+                tSach.setMaThe(cursor.getString(4));
+                tSach.setSoLuong(cursor.getInt(5));
+                tSach.setGiaSach(cursor.getDouble(6));
+                tSach.setNgayDT(cursor.getString(7));
+                tSach.setNgayTT(cursor.getString(8));
+                tSach.setTinhTS(cursor.getString(9));
+                tSach.setSpHienTrang(cursor.getString(10));
                 data.remove(tSach);
             } while (cursor.moveToNext());
 
@@ -55,27 +58,8 @@ public class DB_LichSuTS extends SQLiteOpenHelper {
     public List<TSach> SuaDL(TSach t) {
         List<TSach> data = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String sql = "Update tbLichSu set tendg=?, mathe=?, ngaydt=?, ngaytt=?, masach=?,tinhts=? where mams=?  ";
-        Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{t.getTenDG(), t.getMaThe(), t.getNgayDT(), t.getNgayTT(), t.getMaSach(), t.getTinhTS(), t.getMaMS()});
-
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                TSach tSach = new TSach();
-                tSach.setMaMS(cursor.getString(0));
-                tSach.setTenDG(cursor.getString(1));
-                tSach.setMaThe(cursor.getString(2));
-                tSach.setNgayDT(cursor.getString(3));
-                tSach.setNgayTT(cursor.getString(4));
-                tSach.setMaSach(cursor.getString(5));
-                tSach.setTinhTS(cursor.getString(6));
-
-                data.add(tSach);
-            } while (cursor.moveToNext());
-
-            // Đóng Cursor sau khi sử dụng
-            cursor.close();
-        }
-
+        String sql = "Update tbLichSu set tendg=?,tensach = ?,hinh = ?, mathe=?,soluong = ?,giasach = ?, ngaydt=?, ngaytt=?,tinhts=?,hientrang = ? where mams=?  ";
+        sqLiteDatabase.execSQL(sql, new Object[]{t.getTenDG(), t.getTenSach(), t.getHinh(), t.getMaThe(), t.getSoLuong(), t.getGiaSach(), t.getNgayDT(), t.getNgayTT(), t.getTinhTS(), t.getSpHienTrang(), t.getMaMS()});
         return data;
     }
 
@@ -90,12 +74,15 @@ public class DB_LichSuTS extends SQLiteOpenHelper {
                 TSach tSach = new TSach();
                 tSach.setMaMS(cursor.getString(0));
                 tSach.setTenDG(cursor.getString(1));
-                tSach.setMaThe(cursor.getString(2));
-                tSach.setNgayDT(cursor.getString(3));
-                tSach.setNgayTT(cursor.getString(4));
-                tSach.setMaSach(cursor.getString(5));
-                tSach.setTinhTS(cursor.getString(6));
-
+                tSach.setTenSach(cursor.getString(2));
+                tSach.setHinh(cursor.getBlob(3));
+                tSach.setMaThe(cursor.getString(4));
+                tSach.setSoLuong(cursor.getInt(5));
+                tSach.setGiaSach(cursor.getDouble(6));
+                tSach.setNgayDT(cursor.getString(7));
+                tSach.setNgayTT(cursor.getString(8));
+                tSach.setTinhTS(cursor.getString(9));
+                tSach.setSpHienTrang(cursor.getString(10));
                 data.add(tSach);
             } while (cursor.moveToNext());
         }

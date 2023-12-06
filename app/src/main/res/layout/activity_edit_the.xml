@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TheThuVien">
+    tools:context=".Edit_The">
 
     <TextView
         android:layout_width="match_parent"
@@ -66,7 +66,7 @@
             android:id="@+id/MaTheNV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mã thẻ (tự dộng) " />
+            android:hint="Mã thẻ (tự động) " />
     </LinearLayout>
 
     <LinearLayout
@@ -194,15 +194,23 @@
         android:padding="30dp">
 
         <Button
-            android:id="@+id/btnLuu"
+            android:id="@+id/btnXoaET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="20dp"
             android:backgroundTint="#2196F3"
-            android:text="Lưu" />
+            android:text="Xóa" />
 
         <Button
-            android:id="@+id/btnDanhSach"
+            android:id="@+id/btnSuaET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="#2196F3"
+            android:text="Sửa" />
+
+        <Button
+            android:id="@+id/btnDanhSachE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#2196F3"

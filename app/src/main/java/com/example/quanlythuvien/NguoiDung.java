@@ -61,7 +61,7 @@ public class NguoiDung extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_manu,menu);
+        getMenuInflater().inflate(R.menu.menu_back,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -69,7 +69,8 @@ public class NguoiDung extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.mnBack)
         {
-            onBackPressed();
+            Intent intent = new Intent(NguoiDung.this, MainActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

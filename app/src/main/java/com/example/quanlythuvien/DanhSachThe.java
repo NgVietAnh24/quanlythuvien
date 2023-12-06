@@ -36,7 +36,7 @@ public class DanhSachThe extends AppCompatActivity {
         lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(DanhSachThe.this, TheThuVien.class);
+                Intent intent = new Intent(DanhSachThe.this, Edit_The.class);
                 intent.putExtra("item", data_t.get(i));
                 startActivity(intent);
             }
@@ -57,14 +57,15 @@ public class DanhSachThe extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_manu, menu);
+        getMenuInflater().inflate(R.menu.menu_back, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.mnBack) {
-            onBackPressed();
+            Intent intent = new Intent(DanhSachThe.this, MainActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

@@ -15,15 +15,15 @@ public class DB_TheThuVien extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbTheTV(hoten text, mathe text, ngaysinh text,gioitinh text, diachi text, email text, sodt text)";
+        String sql = "Create table tbTheTV(hinh blob, hoten text, mathe text, ngaysinh text,gioitinh text, diachi text, email text, sodt text)";
         sqLiteDatabase.execSQL(sql);
 
     }
 
     public void ThemDl(TheTV theTV) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String sql = "insert into tbTheTV values(?,?,?,?,?,?,?)";
-        sqLiteDatabase.execSQL(sql, new String[]{theTV.getHoTen(), theTV.getMaThe(), theTV.getNgaySinh(),theTV.getGioiTinh(), theTV.getDiaChi(), theTV.getEmail(), theTV.getSoDT()});
+        String sql = "insert into tbTheTV values(?,?,?,?,?,?,?,?)";
+        sqLiteDatabase.execSQL(sql, new Object[]{theTV.getHinh(),theTV.getHoTen(), theTV.getMaThe(), theTV.getNgaySinh(),theTV.getGioiTinh(), theTV.getDiaChi(), theTV.getEmail(), theTV.getSoDT()});
     }
     public List<TheTV> XoaDL(TheTV theTV) {
         List<TheTV> data = new ArrayList<>();
@@ -34,13 +34,14 @@ public class DB_TheThuVien extends SQLiteOpenHelper {
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 TheTV t = new TheTV();
-                t.setHoTen(cursor.getString(0));
-                t.setMaThe(cursor.getString(1));
-                t.setNgaySinh(cursor.getString(2));
-                t.setGioiTinh(cursor.getString(3));
-                t.setDiaChi(cursor.getString(4));
-                t.setEmail(cursor.getString(5));
-                t.setSoDT(cursor.getString(6));
+                t.setHinh(cursor.getBlob(0));
+                t.setHoTen(cursor.getString(1));
+                t.setMaThe(cursor.getString(2));
+                t.setNgaySinh(cursor.getString(3));
+                t.setGioiTinh(cursor.getString(4));
+                t.setDiaChi(cursor.getString(5));
+                t.setEmail(cursor.getString(6));
+                t.setSoDT(cursor.getString(7));
                 data.remove(t);
             } while (cursor.moveToNext());
 
@@ -54,26 +55,10 @@ public class DB_TheThuVien extends SQLiteOpenHelper {
     public List<TheTV> SuaDL(TheTV theTV) {
         List<TheTV> data = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String sql = "Update tbTheTV set hoten = ?, ngaysinh = ?, diachi = ?, email = ?, sodt = ? where mathe = ?";
-        Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{theTV.getHoTen(), theTV.getNgaySinh(), theTV.getDiaChi(), theTV.getEmail(), theTV.getSoDT(), theTV.getMaThe()});
+        String sql = "Update tbTheTV set hinh = ?, hoten = ?, ngaysinh = ?,gioitinh = ?, diachi = ?, email = ?, sodt = ? where mathe = ?";
+        sqLiteDatabase.execSQL(sql, new Object[]{theTV.getHinh(),theTV.getHoTen(), theTV.getNgaySinh(),theTV.getGioiTinh(), theTV.getDiaChi(), theTV.getEmail(), theTV.getSoDT(), theTV.getMaThe()});
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                TheTV t = new TheTV();
-                t.setHoTen(cursor.getString(0));
-                t.setMaThe(cursor.getString(1));
-                t.setNgaySinh(cursor.getString(2));
-                t.setGioiTinh(cursor.getString(3));
-                t.setDiaChi(cursor.getString(4));
-                t.setEmail(cursor.getString(5));
-                t.setSoDT(cursor.getString(6));
 
-                data.add(t);
-            } while (cursor.moveToNext());
-
-            // Đóng Cursor sau khi sử dụng
-            cursor.close();
-        }
 
         return data;
     }
@@ -87,14 +72,14 @@ public class DB_TheThuVien extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 TheTV t = new TheTV();
-                t.setHoTen(cursor.getString(0));
-                t.setMaThe(cursor.getString(1));
-                t.setNgaySinh(cursor.getString(2));
-                t.setGioiTinh(cursor.getString(3));
-                t.setDiaChi(cursor.getString(4));
-                t.setEmail(cursor.getString(5));
-                t.setSoDT(cursor.getString(6));
-
+                t.setHinh(cursor.getBlob(0));
+                t.setHoTen(cursor.getString(1));
+                t.setMaThe(cursor.getString(2));
+                t.setNgaySinh(cursor.getString(3));
+                t.setGioiTinh(cursor.getString(4));
+                t.setDiaChi(cursor.getString(5));
+                t.setEmail(cursor.getString(6));
+                t.setSoDT(cursor.getString(7));
                 data.add(t);
             } while (cursor.moveToNext());
         }

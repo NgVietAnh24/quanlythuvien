@@ -3,27 +3,26 @@ package com.example.quanlythuvien;
 import java.io.Serializable;
 
 public class TSach implements Serializable {
-    String maMS, tenDG, tenSach, maThe, ngayDT, ngayTT, maSach, tinhTS;
+    int soLuong;
+    Double giaSach;
+    byte[] hinh;
+    String  maMS, tenDG,maThe, tenSach,  ngayDT, ngayTT,  tinhTS,spHienTrang;
 
     public TSach() {
     }
-    public TSach(String maMS, String tenDG, String tenSach, String maThe, String ngayDT, String ngayTT, String maSach, String tinhTS) {
+
+    public TSach(String maMS, String tenDG,String tenSach, byte[] hinh, String maThe, int soLuong, Double giaSach, String tinhTS,  String ngayDT, String ngayTT, String spHienTrang) {
         this.maMS = maMS;
+        this.maThe = maThe;
+        this.soLuong = soLuong;
+        this.giaSach = giaSach;
+        this.hinh = hinh;
         this.tenDG = tenDG;
         this.tenSach = tenSach;
-        this.maThe = maThe;
         this.ngayDT = ngayDT;
         this.ngayTT = ngayTT;
-        this.maSach = maSach;
         this.tinhTS = tinhTS;
-    }
-
-    public String getTenSach() {
-        return tenSach;
-    }
-
-    public void setTenSach(String tenSach) {
-        this.tenSach = tenSach;
+        this.spHienTrang = spHienTrang;
     }
 
     public String getMaMS() {
@@ -34,6 +33,38 @@ public class TSach implements Serializable {
         this.maMS = maMS;
     }
 
+    public String getMaThe() {
+        return maThe;
+    }
+
+    public void setMaThe(String maThe) {
+        this.maThe = maThe;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public Double getGiaSach() {
+        return giaSach;
+    }
+
+    public void setGiaSach(Double giaSach) {
+        this.giaSach = giaSach;
+    }
+
+    public byte[] getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(byte[] hinh) {
+        this.hinh = hinh;
+    }
+
     public String getTenDG() {
         return tenDG;
     }
@@ -42,12 +73,12 @@ public class TSach implements Serializable {
         this.tenDG = tenDG;
     }
 
-    public String getMaThe() {
-        return maThe;
+    public String getTenSach() {
+        return tenSach;
     }
 
-    public void setMaThe(String maThe) {
-        this.maThe = maThe;
+    public void setTenSach(String tenSach) {
+        this.tenSach = tenSach;
     }
 
     public String getNgayDT() {
@@ -66,14 +97,6 @@ public class TSach implements Serializable {
         this.ngayTT = ngayTT;
     }
 
-    public String getMaSach() {
-        return maSach;
-    }
-
-    public void setMaSach(String maSach) {
-        this.maSach = maSach;
-    }
-
     public String getTinhTS() {
         return tinhTS;
     }
@@ -82,16 +105,11 @@ public class TSach implements Serializable {
         this.tinhTS = tinhTS;
     }
 
-    @Override
-    public String toString() {
-        return
-                "Mã mượn sách: " + maMS + '\'' +
-                        "Tên độc giả: " + tenDG + '\'' +
-                        "Mã thẻ: " + maThe + '\'' +
-                        "Ngày dự trả" + ngayDT + '\'' +
-                        "Ngày thực trả: " + ngayTT + '\'' +
-                        "Mã sách" + maSach + '\'' +
-                        "Tình trạng sách: " + tinhTS;
+    public String getSpHienTrang() {
+        return spHienTrang;
+    }
 
+    public void setSpHienTrang(String spHienTrang) {
+        this.spHienTrang = spHienTrang;
     }
 }

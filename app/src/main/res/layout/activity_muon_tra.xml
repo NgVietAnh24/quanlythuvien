@@ -1,57 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center|top"
+    android:layout_margin="16dp"
+    android:background="#80FFFFFF"
     android:orientation="vertical"
     tools:context=".Screen_Muon_Tra">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
+        android:background="@drawable/bg_yellow_conrner_16_top_left"
         android:gravity="center"
-        android:text="Mượn sách - Trả sách"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:padding="12dp"
+        android:text="Mượn sách"
+        android:textSize="20sp" />
 
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/border_radius"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <Button
-            android:id="@+id/btnMuon"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:backgroundTint="#2196F3"
-            android:text="Mượn sách"
-            android:textColor="@color/black"
-            android:textSize="30dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnTra"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#2196F3"
-            android:text="Trả sách"
-            android:textColor="@color/black"
-            android:textSize="30dp" />
+            <TextView
+                android:id="@+id/tvMaSach"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Mã mượn sách:"
+                android:textSize="19sp" />
 
+            <EditText
+                android:id="@+id/edtMaMSach"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="mã mượn sách (tự động)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Tên độc giả:"
+                android:textSize="19sp" />
+
+            <Spinner
+                android:id="@+id/spTenDG"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập tên độc giả" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTenSach"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Tên sách:"
+                android:textSize="19sp" />
+
+            <Spinner
+                android:id="@+id/spTenSach"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ivHinhM"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/baseline_add_photo_alternate_24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Mã thẻ:"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/edtMaThe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mã thẻ" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSoLuong"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Số lượng:"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/edtSoLuong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập số lượng"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvGia"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Giá sách:"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/edtGia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Giá sách"
+                android:inputType="number" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTinhTS1"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Tình trạng:"
+                android:textSize="19sp" />
+
+            <Spinner
+                android:id="@+id/spTinhTS1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Ngày dự trả:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtNgayDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập ngày dự trả"
+                android:inputType="datetime" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Ngày thực trả:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtNgayTT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tự động cập nhật ngày"
+                android:inputType="datetime"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spHienTrang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/btnThemSach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:backgroundTint="#2196F3"
+                android:text="Thêm" />
+
+            <!--        <Button-->
+            <!--            android:id="@+id/btnXoa"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:backgroundTint="#2196F3"-->
+
+            <!--            android:text="Xóa" />-->
+
+            <!--        <Button-->
+            <!--            android:id="@+id/btnSua"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:backgroundTint="#2196F3"-->
+
+            <!--            android:text="Sửa" />-->
+
+            <Button
+                android:id="@+id/btnOutOfAddBookM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#2196F3"
+                android:text="Thoát" />
+        </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnThoat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#2196F3"
-        android:text="Thoát"
-        android:textColor="@color/black" />
 </LinearLayout>

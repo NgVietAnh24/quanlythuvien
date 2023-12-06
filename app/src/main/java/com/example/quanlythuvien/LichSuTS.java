@@ -1,23 +1,22 @@
 package com.example.quanlythuvien;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LichSuTS extends AppCompatActivity {
-    ListView lvLichSu;
-
-    static List<TSach> data_ls = new ArrayList<>();
-
-    static AdapterSach adapter_ls;
-
+    RecyclerView rcvLichSu;
+    Adapter_TSach adapter_tSach;
+    static List<TSach> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,39 +26,36 @@ public class LichSuTS extends AppCompatActivity {
     }
 
     private void setEvent() {
+        adapter_tSach = new Adapter_TSach();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rcvLichSu.setLayoutManager(linearLayoutManager);
 
-//        adapter_ls = new AdapterSach(this, R.layout.activity_sach_item, data_ls);
-//        lvLichSu.setAdapter(adapter_ls);
-
-//        lvLichSu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-////                Intent intent = new Intent(LichSuTS.this,Edit_ND.class);
-////                intent.putExtra("item",data_u.get(i));
-////                startActivity(intent);
-//            }
-//        });
-
-        lvLichSu.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                data_ls.remove(i);
-//                adapter_ls.updateData(data_ls);
-                return false;
-            }
-        });
+        adapter_tSach.setData(list,LichSuTS.this);
+        rcvLichSu.setAdapter(adapter_tSach);
     }
 
 
     private void setControl() {
-        lvLichSu = findViewById(R.id.lvLichSu);
+        rcvLichSu = findViewById(R.id.rcvLichSu);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_manu,menu);
+        getMenuInflater().inflate(R.menu.menu_back, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.mnBack)
+        {
+            Intent intent = new Intent(LichSuTS.this, MainActivity.class);
+            startActivity(intent);
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
 }
+
+
+
 

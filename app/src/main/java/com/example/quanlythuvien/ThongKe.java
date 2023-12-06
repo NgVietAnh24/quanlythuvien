@@ -18,13 +18,12 @@ import java.util.List;
 
 public class ThongKe extends AppCompatActivity {
     Spinner spThongKe;
-    //    ListView lvThongKe;
+
     TextView txtThongKe;
     List<String> data_ts = new ArrayList<>();
     ArrayAdapter arrayAdapter;
     List<String> data_t = new ArrayList<>();
     ArrayAdapter arrayAdapter_t;
-    DB_TraSach db_traSach;
     DB_Sach db_sach;
 
     @Override
@@ -65,23 +64,30 @@ public class ThongKe extends AppCompatActivity {
                     }
                 } else if (selectItem.equals("Sách đã trả")) {
                     // Kiểm tra xem Adapter có tồn tại không
-                    if (LichSuTS.adapter_ls != null) {
+                    if (LichSuTS.list != null) {
                         // Lấy số lượng item trong Adapter (tức là số lượng item trong ListView)
-//                        int itemCount = LichSuTS.adapter_ls.getCount();
-//                        txtThongKe.setText("Số sách đã trả: " + itemCount);
+                        int total = LichSuTS.list.size();
+                        txtThongKe.setText("Số sách đã trả: " + total);
                         arrayAdapter.notifyDataSetChanged();
                     }
                 } else if (selectItem.equals("Số sách đang mượn")) {
                     // Kiểm tra xem Adapter có tồn tại không
-                    if (Danh_Sach_Tra.adapter_Sach != null) {
+                    if (Danh_Sach_Tra.list != null) {
                         // Lấy số lượng item trong Adapter (tức là số lượng item trong ListView)
-//                        int itemCount = Danh_Sach_Tra.adapter_Sach.getCount();
-//                        txtThongKe.setText("Số sách đang mượn: " + itemCount);
+                        int itemCount = Danh_Sach_Tra.list.size();
+                        txtThongKe.setText("Số sách đang mượn: " + itemCount);
                         arrayAdapter.notifyDataSetChanged();
                     }
 
+                }else if (selectItem.equals("Số sách đang mượn")) {
+                    // Kiểm tra xem Adapter có tồn tại không
+                    if (Danh_Sach_Tra.list != null) {
+                        // Lấy số lượng item trong Adapter (tức là số lượng item trong ListView)
+                        int itemCount = Danh_Sach_Tra.list.size();
+                        txtThongKe.setText("Số sách đang mượn: " + itemCount);
+                        arrayAdapter.notifyDataSetChanged();
+                    }
                 }
-
             }
 
             @Override
@@ -91,29 +97,30 @@ public class ThongKe extends AppCompatActivity {
         });
     }
 
+
     public void KhoiTao() {
         data_t.add("Sách cũ");
         data_t.add("Sách mới");
         data_t.add("Sách đã trả");
         data_t.add("Số sách đang mượn");
         data_t.add("Số lượng tài khoản");
+        data_t.add("số lượng sách mượn nhiều nhất trong tháng");
     }
 
     private void setControl() {
         spThongKe = findViewById(R.id.spThongKe);
-//        lvThongKe = findViewById(R.id.lvThongKe);
         txtThongKe = findViewById(R.id.txtThongKe);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_manu, menu);
+        getMenuInflater().inflate(R.menu.menu_back, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.mnBack) {
-            onBackPressed();
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

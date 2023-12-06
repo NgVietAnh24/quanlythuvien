@@ -15,7 +15,7 @@
 
 
         <activity
-                    android:name=".Danh_Sach_Of_Sach"
+                    android:name=".Login"
                     android:exported="true">
                     <intent-filter>
                         <action android:name="android.intent.action.MAIN" />
@@ -62,16 +62,11 @@
             android:exported="false">
 
         </activity>
-        <activity
-            android:name=".Nhap_Sach"
-            android:exported="false">
+<!--        <activity-->
+<!--            android:name=".Danh_Sach_Tra"-->
+<!--            android:exported="false">-->
 
-        </activity>
-        <activity
-            android:name=".MuonSach"
-            android:exported="false">
-
-        </activity>
+<!--        </activity>-->
         <activity
             android:name=".TimSach"
             android:exported="false">
@@ -94,6 +89,21 @@
         </activity>
         <activity
             android:name=".TheThuVien"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".Edit_Sach"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".Danh_Sach_Of_Sach"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".Edit_The"
             android:exported="false">
 
         </activity>

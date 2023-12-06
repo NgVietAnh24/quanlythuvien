@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     DB_Users db_users;
     List<User> data = new ArrayList<>();
     AdapterUser adapterUser;
+    DB_Sach dbSach;
+    DB_TraSach dbTraSach;
+    DB_TheThuVien db_theThuVien;
+    DB_LichSuTS dbLichSuTS;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,21 +33,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
+        dbLichSuTS = new DB_LichSuTS(this);
+        db_theThuVien = new DB_TheThuVien(this);
+        dbSach = new DB_Sach(this);
         db_users = new DB_Users(this);
+        dbTraSach = new DB_TraSach(this);
         adapterUser = new AdapterUser(this, R.layout.activity_item_users, data);
         ibtnMuonTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Đọc dữ liệu của danh sách mượn trả
+                Danh_Sach_Tra.list.clear();
+                Danh_Sach_Tra.list.addAll(dbTraSach.DocDL());
+                // Đọc dữ liệu của sách
+                Danh_Sach_Of_Sach.list.clear();
+                Danh_Sach_Of_Sach.list.addAll(dbSach.DocDL());
+                // Đọc dữ liệu của người dùng
+                NguoiDung.data_u.clear();
+                NguoiDung.data_u.addAll(db_users.DocDL());
+                // Đọc dữ liệu của thẻ thư viện
+                DanhSachThe.data_t.clear();
+                DanhSachThe.data_t.addAll(db_theThuVien.DocDL());
                 // Chuyển sang màn hình mượn sách - trả sách
-                Intent intent = new Intent(MainActivity.this, Screen_Muon_Tra.class);
+                Intent intent = new Intent(MainActivity.this, Danh_Sach_Tra.class);
                 startActivity(intent);
+
+
             }
         });
         ibtnSach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Đọc dữ liệu của sách
+                Danh_Sach_Of_Sach.list.clear();
+                Danh_Sach_Of_Sach.list.addAll(dbSach.DocDL());
                 // Chuyển sang màn hình nhập sách
-                Intent intent = new Intent(MainActivity.this, Nhap_Sach.class);
+                Intent intent = new Intent(MainActivity.this, Danh_Sach_Of_Sach.class);
                 startActivity(intent);
             }
         });
@@ -53,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 // Chuyển sang màn hình người dùng
                 Intent intent = new Intent(MainActivity.this, NguoiDung.class);
                 startActivity(intent);
+                // Đọc dữ liệu của người dùng
                 NguoiDung.data_u.clear();
                 NguoiDung.data_u.addAll(db_users.DocDL());
                 adapterUser.notifyDataSetChanged();
@@ -64,11 +90,29 @@ public class MainActivity extends AppCompatActivity {
                 // Chuyển sang màn hình tìm sách
                 Intent intent = new Intent(MainActivity.this, TimSach.class);
                 startActivity(intent);
+                // Đọc dữ liệu của sách
+                Danh_Sach_Of_Sach.list.clear();
+                Danh_Sach_Of_Sach.list.addAll(dbSach.DocDL());
             }
         });
         ibtnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Đọc dữ liệu lịch sử trả sách
+                LichSuTS.list.clear();
+                LichSuTS.list.addAll(dbLichSuTS.DocDL());
+                // Đọc dữ liệu của danh sách mượn trả
+                Danh_Sach_Tra.list.clear();
+                Danh_Sach_Tra.list.addAll(dbTraSach.DocDL());
+                // Đọc dữ liệu của sách
+                Danh_Sach_Of_Sach.list.clear();
+                Danh_Sach_Of_Sach.list.addAll(dbSach.DocDL());
+                // Đọc dữ liệu của người dùng
+                NguoiDung.data_u.clear();
+                NguoiDung.data_u.addAll(db_users.DocDL());
+                // Đọc dữ liệu của thẻ thư viện
+                DanhSachThe.data_t.clear();
+                DanhSachThe.data_t.addAll(db_theThuVien.DocDL());
                 // Chuyển sang màn hình thống kê
                 Intent intent = new Intent(MainActivity.this, ThongKe.class);
                 startActivity(intent);

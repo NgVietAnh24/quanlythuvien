@@ -1,6 +1,8 @@
 package com.example.quanlythuvien;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,17 +36,23 @@ public class Adapter_TheTV extends ArrayAdapter {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        final TheTV theTV = data.get(position);
         convertView = LayoutInflater.from(context).inflate(resource, null);
         ImageView ivHinh = convertView.findViewById(R.id.ivHinh);
         TextView tvHoTen = convertView.findViewById(R.id.tvHoTen);
         TextView tvMaThe = convertView.findViewById(R.id.tvMaThe);
-        TheTV theTV = data.get(position);
-            ivHinh.setImageResource(R.drawable.placeholder_image);
-            tvHoTen.setText(theTV.getHoTen());
-            tvMaThe.setText(theTV.getMaThe());
+        TextView tvNgaySinh = convertView.findViewById(R.id.tvNgaySinh);
+        TextView tvGioiTinh = convertView.findViewById(R.id.tvGioiTinh);
 
-            return convertView;
-        }
+        byte[] hinh = theTV.getHinh();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinh, 0, hinh.length);
+        ivHinh.setImageBitmap(bitmap);
+        tvHoTen.setText(theTV.getHoTen());
+        tvMaThe.setText(theTV.getMaThe());
+        tvNgaySinh.setText(theTV.getNgaySinh());
+        tvGioiTinh.setText(theTV.getGioiTinh());
+        return convertView;
     }
+}
 
 

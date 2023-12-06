@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".TraSach">
-    <TextView
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvDSTra"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:id="@+id/flThem_dsTra"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
-        android:gravity="center"
-        android:text="Danh Sách "
+        android:src="@drawable/baseline_add_circle_24"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"/>
 
-        android:textSize="40sp"/>
-    <ListView
-        android:id="@+id/lvDanhSach"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
-
-
-</LinearLayout>
+</RelativeLayout>

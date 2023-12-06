@@ -88,8 +88,8 @@ public class Edit_ND extends AppCompatActivity {
 
         edtUsername = findViewById(R.id.edtUserName);
         edtPassword = findViewById(R.id.edtPassWord);
-        btnSua = findViewById(R.id.btnSua);
-        btnXoa = findViewById(R.id.btnXoa);
+        btnSua = findViewById(R.id.btnSuaND);
+        btnXoa = findViewById(R.id.btnXoaND);
         btnDanhSach = findViewById(R.id.btnDanhSach);
     }
 }

@@ -16,7 +16,7 @@ public class DB_Sach extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "Create table tbSach(hinh integer,masach text, tensach text,  soluong text, giasach text, tinhts text, namxb text)";
+        String sql = "Create table tbSach(hinh blob, masach text, tensach text,  soluong integer, giasach integer, tinhts text, namxb integer)";
         sqLiteDatabase.execSQL(sql);
 
     }
@@ -24,7 +24,7 @@ public class DB_Sach extends SQLiteOpenHelper {
     public void ThemDl(Sach s) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String sql = "insert into tbSach values(?,?,?,?,?,?,?)";
-        sqLiteDatabase.execSQL(sql, new Object[]{s.getImgPath(),s.getMaSach(), s.getTenSach(), s.getSoLuong(), s.getGiaSach(), s.getTinhTS(), s.getNamXB()});
+        sqLiteDatabase.execSQL(sql, new Object[]{s.getHinh(), s.getMaSach(), s.getTenSach(), s.getSoLuong(), s.getGiaSach(), s.getTinhTS(), s.getNamXB()});
     }
 
     public void XoaDl(Sach s) {
@@ -36,7 +36,13 @@ public class DB_Sach extends SQLiteOpenHelper {
     public void SuaDl(Sach s) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String sql = "Update tbSach set hinh = ?, tensach=?,  soluong=?, giasach=?,tinhts = ? , namxb=? where masach=?  ";
-        sqLiteDatabase.execSQL(sql, new  Object[]{s.getImgPath(),s.getTenSach(), s.getSoLuong(), s.getGiaSach(), s.getTinhTS(), s.getNamXB(), s.getMaSach()});
+        sqLiteDatabase.execSQL(sql, new Object[]{s.getHinh(), s.getTenSach(), s.getSoLuong(), s.getGiaSach(), s.getTinhTS(), s.getNamXB(), s.getMaSach()});
+    }
+
+    public void SuaTra(Sach s) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String sql = "Update tbSach set soluong = soluong +1 where masach=?  ";
+        sqLiteDatabase.execSQL(sql, new Object[]{s.getSoLuong(), s.getMaSach()});
     }
 
     public List<Sach> TimDLTheoTen(Sach s) {
@@ -48,13 +54,13 @@ public class DB_Sach extends SQLiteOpenHelper {
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 Sach sach = new Sach();
-                sach.setImgPath(cursor.getInt(0));
+                sach.setHinh(cursor.getBlob(0));
                 sach.setMaSach(cursor.getString(1));
                 sach.setTenSach(cursor.getString(2));
-                sach.setSoLuong(cursor.getString(3));
-                sach.setGiaSach(cursor.getString(4));
+                sach.setSoLuong(cursor.getInt(3));
+                sach.setGiaSach(cursor.getDouble(4));
                 sach.setTinhTS(cursor.getString(5));
-                sach.setNamXB(cursor.getString(6));
+                sach.setNamXB(cursor.getInt(6));
                 data.add(sach);
             } while (cursor.moveToNext());
 
@@ -73,19 +79,20 @@ public class DB_Sach extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Sach sach = new Sach();
-                sach.setImgPath(cursor.getInt(0));
+                sach.setHinh(cursor.getBlob(0));
                 sach.setMaSach(cursor.getString(1));
                 sach.setTenSach(cursor.getString(2));
-                sach.setSoLuong(cursor.getString(3));
-                sach.setGiaSach(cursor.getString(4));
-                sach.setNamXB(cursor.getString(5));
+                sach.setSoLuong(cursor.getInt(3));
+                sach.setGiaSach(cursor.getDouble(4));
+                sach.setTinhTS(cursor.getString(5));
+                sach.setNamXB(cursor.getInt(6));
                 data.add(sach);
             } while (cursor.moveToNext());
         }
         return data;
     }
 
-//     Thống kê số lượng sách cũ
+    //     Thống kê số lượng sách cũ
     @SuppressLint("Range")
     public int getCountSachCu() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -113,7 +120,7 @@ public class DB_Sach extends SQLiteOpenHelper {
 //        return count;
 //    }
 
-        @SuppressLint("Range")
+    @SuppressLint("Range")
     public int getCountSachMoi() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT COUNT(*) as total FROM tbSach WHERE tinhts == 'Mới'", null);
@@ -126,7 +133,8 @@ public class DB_Sach extends SQLiteOpenHelper {
         cursor.close();
         return count;
     }
-// Phương thức để đếm số lượng sách mới
+
+    // Phương thức để đếm số lượng sách mới
 //    public int getCountSachMoi() {
 //        SQLiteDatabase db = this.getReadableDatabase();
 //        String query = "SELECT COUNT(*) FROM tbSach WHERE isNew = 1";
@@ -140,6 +148,19 @@ public class DB_Sach extends SQLiteOpenHelper {
 //        cursor.close();
 //        return count;
 //    }
+    public void SuaMuon(String tenSach) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String sql = "UPDATE tbSach SET soluong = CASE WHEN soluong > 0 THEN soluong - 1 ELSE 0 END WHERE tensach = ?";
+        sqLiteDatabase.execSQL(sql, new String[]{tenSach});
+        sqLiteDatabase.close();
+    }
+
+    public void SuaTra(String tenSach) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String sql = "UPDATE tbSach SET soluong = soluong + 1 WHERE tensach = ?";
+        sqLiteDatabase.execSQL(sql, new String[]{tenSach});
+        sqLiteDatabase.close();
+    }
 
 
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
