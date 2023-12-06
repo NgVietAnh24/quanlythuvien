@@ -28,11 +28,12 @@ public class TraSach extends AppCompatActivity {
             edtSoLuong,
             edtNgayDT,
             edtNgayTT,
+            edtNgayM,
             edtGiaSach,
             edtMaMS;
     ImageView ivHinh;
-    Spinner spTinhTS, spTenDG, spHienTrang,spTenSach;
-    Button btnTraSach,btnSua,btnDanhSach,btnQuaHan, btnLichSu;
+    Spinner spTinhTS, spTenDG, spHienTrang, spTenSach;
+    Button btnTraSach, btnSua, btnDanhSach, btnQuaHan, btnLichSu;
     List<String> data_ts = new ArrayList<>();
     List<String> data_ht = new ArrayList<>();
     List<String> data_ts1 = new ArrayList<>();
@@ -72,32 +73,32 @@ public class TraSach extends AppCompatActivity {
         spHienTrang.setAdapter(adapter_ht);
 
 
-
         Intent intent = getIntent();
         if (intent != null) {
             TSach tsach = (TSach) intent.getSerializableExtra("key");
             ivHinh.setImageBitmap(BitmapFactory.decodeByteArray(tsach.getHinh(), 0, tsach.getHinh().length));
             edtMaMS.setText(tsach.getMaMS());
-            if(tsach.getMaThe() == edtMaThe.getText().toString()){
+            if (tsach.getMaThe() == edtMaThe.getText().toString()) {
                 tsach.getTenDG().toString();
             }
             ivHinh.setImageBitmap(BitmapFactory.decodeByteArray(tsach.getHinh(), 0, tsach.getHinh().length));
+            edtNgayM.setText(tsach.getNgayM());
             edtNgayDT.setText(tsach.getNgayDT());
             edtNgayTT.setText(tsach.getNgayTT());
-            edtSoLuong.setText(tsach.getSoLuong()+"");
-            if(tsach.getTinhTS().equals("Cũ")){
+            edtSoLuong.setText(tsach.getSoLuong() + "");
+            if (tsach.getTinhTS().equals("Cũ")) {
                 spTinhTS.setSelection(0);
             }
-            if(tsach.getTinhTS().equals("Mới")){
+            if (tsach.getTinhTS().equals("Mới")) {
                 spTinhTS.setSelection(1);
             }
-            if(tsach.getSpHienTrang().equals("Đang mượn")){
+            if (tsach.getSpHienTrang().equals("Đang mượn")) {
                 spHienTrang.setSelection(0);
             }
-            if(tsach.getSpHienTrang().equals("Quá hạn")){
+            if (tsach.getSpHienTrang().equals("Quá hạn")) {
                 spHienTrang.setSelection(1);
             }
-            if(tsach.getSpHienTrang().equals("Trước hạn")){
+            if (tsach.getSpHienTrang().equals("Trước hạn")) {
                 spHienTrang.setSelection(2);
             }
 
@@ -132,8 +133,8 @@ public class TraSach extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 item.setTenSach(spTenSach.getSelectedItem().toString());
-                for(Sach sach : Danh_Sach_Of_Sach.list){
-                    if(sach.getTenSach() == spTenSach.getSelectedItem().toString()){
+                for (Sach sach : Danh_Sach_Of_Sach.list) {
+                    if (sach.getTenSach() == spTenSach.getSelectedItem().toString()) {
                         byte[] hinh = sach.getHinh();
                         Bitmap bitmap = BitmapFactory.decodeByteArray(hinh, 0, hinh.length);
                         ivHinh.setImageBitmap(bitmap);
@@ -152,8 +153,8 @@ public class TraSach extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 item.setTenSach(spTenDG.getSelectedItem().toString());
-                for(TheTV the : DanhSachThe.data_t){
-                    if(the.getHoTen() == spTenDG.getSelectedItem().toString()){
+                for (TheTV the : DanhSachThe.data_t) {
+                    if (the.getHoTen() == spTenDG.getSelectedItem().toString()) {
                         edtMaThe.setText(the.getMaThe());
                     }
                 }
@@ -175,8 +176,9 @@ public class TraSach extends AppCompatActivity {
                 item.setMaThe(edtMaThe.getText().toString());
                 item.setSoLuong(Integer.parseInt(edtSoLuong.getText().toString()));
                 item.setGiaSach(Double.parseDouble(edtGiaSach.getText().toString()));
+                item.setNgayM(edtNgayM.getText().toString());
                 item.setNgayDT(edtNgayDT.getText().toString());
-                item.setNgayTT(edtNgayTT.getText().toString()+"Chưa trả");
+                item.setNgayTT(edtNgayTT.getText().toString() + "Chưa trả");
                 dbTraSach.SuaDL(item);
                 Danh_Sach_Tra.list.clear();
                 Danh_Sach_Tra.list.addAll(dbTraSach.DocDL());
@@ -189,6 +191,7 @@ public class TraSach extends AppCompatActivity {
                 edtMaThe.setText("");
                 edtSoLuong.setText("");
                 edtGiaSach.setText("");
+                edtNgayM.setText("");
                 edtNgayDT.setText("");
                 edtNgayTT.setText("");
                 spTinhTS.setSelection(0);
@@ -207,6 +210,7 @@ public class TraSach extends AppCompatActivity {
                 tSach.setMaThe(edtMaThe.getText().toString());
                 tSach.setSoLuong(Integer.parseInt(edtSoLuong.getText().toString()));
                 tSach.setGiaSach(Double.parseDouble(edtGiaSach.getText().toString()));
+                tSach.setNgayM(edtNgayM.getText().toString());
                 tSach.setNgayDT(edtNgayDT.getText().toString());
                 // setTime khi thêm vào lịch sử
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
@@ -225,6 +229,7 @@ public class TraSach extends AppCompatActivity {
                 edtMaThe.setText("");
                 edtSoLuong.setText("");
                 edtGiaSach.setText("");
+                edtNgayM.setText("");
                 edtNgayDT.setText("");
                 edtNgayTT.setText("");
                 spTinhTS.setSelection(0);
@@ -261,10 +266,10 @@ public class TraSach extends AppCompatActivity {
         data_ht.add("Đang mượn");
         data_ht.add("Quá hạn");
         data_ht.add("Trước hạn");
-        for(Sach sach : Danh_Sach_Of_Sach.list){
+        for (Sach sach : Danh_Sach_Of_Sach.list) {
             data_ht1.add(sach.getTenSach());
         }
-        for(TheTV the: DanhSachThe.data_t){
+        for (TheTV the : DanhSachThe.data_t) {
             data_ts1.add(the.getHoTen());
         }
     }
@@ -281,6 +286,8 @@ public class TraSach extends AppCompatActivity {
         edtMaThe.setEnabled(false);
         edtSoLuong = findViewById(R.id.edtSoLuong);
         spTinhTS = findViewById(R.id.spTinhTS1);
+        edtNgayM = findViewById(R.id.edtNgayM);
+        edtNgayM.setEnabled(false);
         edtNgayDT = findViewById(R.id.edtNgayDT);
         edtNgayTT = findViewById(R.id.edtNgayTT);
         edtNgayTT.setEnabled(false);
@@ -292,6 +299,7 @@ public class TraSach extends AppCompatActivity {
         spHienTrang = findViewById(R.id.spHienTrang);
         btnDanhSach = findViewById(R.id.btnDanhSachMS);
     }
+
     public byte[] Image_View_To_Byte(ImageView i) {
         BitmapDrawable drawable = (BitmapDrawable) i.getDrawable();
         Bitmap bmp = drawable.getBitmap();

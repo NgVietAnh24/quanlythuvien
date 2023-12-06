@@ -59,6 +59,7 @@ public class Adapter_TSach extends RecyclerView.Adapter<Adapter_TSach.ViewHolder
         holder.tvMaThe.setText(tsach.getMaThe());
         holder.tvSoLuong.setText(String.valueOf(tsach.getSoLuong()));
         holder.tvGiaSach.setText(String.valueOf(tsach.getGiaSach()));
+        holder.tvNgayM.setText(tsach.getNgayM());
         holder.tvNgayDT.setText(tsach.getNgayDT());
         holder.tvNgayTT.setText(tsach.getNgayTT());
         holder.tvStatus.setText(tsach.getTinhTS());
@@ -77,7 +78,7 @@ public class Adapter_TSach extends RecyclerView.Adapter<Adapter_TSach.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivHinh;
-        TextView tvMaMuonSach, tvTenDocGia, tvTenSach, tvMaThe, tvSoLuong, tvGiaSach, tvNgayDT, tvNgayTT, tvStatus, tvHienTrang;
+        TextView tvMaMuonSach,tvNgayM, tvTenDocGia, tvTenSach, tvMaThe, tvSoLuong, tvGiaSach, tvNgayDT, tvNgayTT, tvStatus, tvHienTrang;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +89,7 @@ public class Adapter_TSach extends RecyclerView.Adapter<Adapter_TSach.ViewHolder
             tvMaThe = itemView.findViewById(R.id.tvMaThe);
             tvSoLuong = itemView.findViewById(R.id.tvSoLuong);
             tvGiaSach = itemView.findViewById(R.id.tvGiaSach);
+            tvNgayM = itemView.findViewById(R.id.tvNgayM);
             tvNgayDT = itemView.findViewById(R.id.tvNgayDT);
             tvNgayTT = itemView.findViewById(R.id.tvNgayTT);
             tvStatus = itemView.findViewById(R.id.tvTinhTS11);

@@ -28,10 +28,11 @@ public class Screen_Muon_Tra extends AppCompatActivity {
             edtSoLuong,
             edtNgayDT,
             edtNgayTT,
+            edtNgayM,
             edtGiaSach,
             edtMaMS;
     ImageView ivHinh;
-    Spinner spTinhTS, spTenDG, spHienTrang,spTenSach;
+    Spinner spTinhTS, spTenDG, spHienTrang, spTenSach;
     Button btnThem, btnThoat;
     List<TSach> data_s = new ArrayList<>();
     List<String> data_ts = new ArrayList<>();
@@ -98,8 +99,8 @@ public class Screen_Muon_Tra extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 item.setTenSach(spTenSach.getSelectedItem().toString());
-                for(Sach sach : Danh_Sach_Of_Sach.list){
-                    if(sach.getTenSach() == spTenSach.getSelectedItem().toString()){
+                for (Sach sach : Danh_Sach_Of_Sach.list) {
+                    if (sach.getTenSach() == spTenSach.getSelectedItem().toString()) {
                         byte[] hinh = sach.getHinh();
                         Bitmap bitmap = BitmapFactory.decodeByteArray(hinh, 0, hinh.length);
                         ivHinh.setImageBitmap(bitmap);
@@ -118,8 +119,8 @@ public class Screen_Muon_Tra extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 item.setTenSach(spTenDG.getSelectedItem().toString());
-                for(TheTV the : DanhSachThe.data_t){
-                    if(the.getHoTen() == spTenDG.getSelectedItem().toString()){
+                for (TheTV the : DanhSachThe.data_t) {
+                    if (the.getHoTen() == spTenDG.getSelectedItem().toString()) {
                         edtMaThe.setText(the.getMaThe());
                     }
                 }
@@ -129,18 +130,6 @@ public class Screen_Muon_Tra extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-
-//        TSach tSach = (TSach) getIntent().getSerializableExtra("item");
-//        edtMaMS.setText(tSach.getMaMS());
-//        edtTenDG.setText(tSach.getTenDG());
-//        edtMaThe.setText(tSach.getMaThe());
-//        edtNgayDT.setText(tSach.getNgayDT());
-//        edtNgayTT.setText(tSach.getNgayTT());
-//        edtMaSach.setText(tSach.getMaSach());
-//        if (tSach.getTinhTS().equals("Cũ"))
-//            spTinhTS.setSelection(0);
-//        if (tSach.getTinhTS().equals("Mới"))
-//            spTinhTS.setSelection(1);
 
 
         btnThem.setOnClickListener(new View.OnClickListener() {
@@ -193,8 +182,11 @@ public class Screen_Muon_Tra extends AppCompatActivity {
                 item.setMaThe(edtMaThe.getText().toString());
                 item.setSoLuong(Integer.parseInt(edtSoLuong.getText().toString()));
                 item.setGiaSach(Double.parseDouble(edtGiaSach.getText().toString()));
+                SimpleDateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+                String timeM = time.format(new Date());
+                item.setNgayM(timeM);
                 item.setNgayDT(edtNgayDT.getText().toString());
-                item.setNgayTT(edtNgayTT.getText().toString()+"Chưa trả");
+                item.setNgayTT(edtNgayTT.getText().toString() + "Chưa trả");
                 dbTraSach.ThemDl(item);
                 dbSach.SuaMuon(item.tenSach);
                 Danh_Sach_Tra.list.clear();
@@ -208,6 +200,7 @@ public class Screen_Muon_Tra extends AppCompatActivity {
                 edtMaThe.setText("");
                 edtSoLuong.setText("");
                 edtGiaSach.setText("");
+                edtNgayM.setText("");
                 edtNgayDT.setText("");
                 edtNgayTT.setText("");
                 spTinhTS.setSelection(0);
@@ -231,10 +224,10 @@ public class Screen_Muon_Tra extends AppCompatActivity {
         data_ts.add("Cũ");
         data_ts.add("Mới");
         data_ht.add("Đang mượn");
-        for(Sach sach : Danh_Sach_Of_Sach.list){
+        for (Sach sach : Danh_Sach_Of_Sach.list) {
             data_ht1.add(sach.getTenSach());
         }
-        for(TheTV the: DanhSachThe.data_t){
+        for (TheTV the : DanhSachThe.data_t) {
             data_ts1.add(the.getHoTen());
         }
     }
@@ -249,6 +242,8 @@ public class Screen_Muon_Tra extends AppCompatActivity {
         edtMaThe.setEnabled(false);
         edtSoLuong = findViewById(R.id.edtSoLuong);
         spTinhTS = findViewById(R.id.spTinhTS1);
+        edtNgayM = findViewById(R.id.edtNgayM);
+        edtNgayM.setEnabled(false);
         edtNgayDT = findViewById(R.id.edtNgayDT);
         edtNgayTT = findViewById(R.id.edtNgayTT);
         edtNgayTT.setEnabled(false);
@@ -260,6 +255,7 @@ public class Screen_Muon_Tra extends AppCompatActivity {
 
 
     }
+
     public byte[] Image_View_To_Byte(ImageView i) {
         BitmapDrawable drawable = (BitmapDrawable) i.getDrawable();
         Bitmap bmp = drawable.getBitmap();

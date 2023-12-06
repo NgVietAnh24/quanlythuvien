@@ -6,15 +6,16 @@ public class TSach implements Serializable {
     int soLuong;
     Double giaSach;
     byte[] hinh;
-    String  maMS, tenDG,maThe, tenSach,  ngayDT, ngayTT,  tinhTS,spHienTrang;
+    String maMS, tenDG, maThe, tenSach, ngayM, ngayDT, ngayTT, tinhTS, spHienTrang;
 
     public TSach() {
     }
 
-    public TSach(String maMS, String tenDG,String tenSach, byte[] hinh, String maThe, int soLuong, Double giaSach, String tinhTS,  String ngayDT, String ngayTT, String spHienTrang) {
+    public TSach(String maMS, String tenDG, String tenSach, byte[] hinh, String maThe, int soLuong, Double giaSach, String tinhTS, String ngayM, String ngayDT, String ngayTT, String spHienTrang) {
         this.maMS = maMS;
         this.maThe = maThe;
         this.soLuong = soLuong;
+        this.ngayM = ngayM;
         this.giaSach = giaSach;
         this.hinh = hinh;
         this.tenDG = tenDG;
@@ -23,6 +24,14 @@ public class TSach implements Serializable {
         this.ngayTT = ngayTT;
         this.tinhTS = tinhTS;
         this.spHienTrang = spHienTrang;
+    }
+
+    public String getNgayM() {
+        return ngayM;
+    }
+
+    public void setNgayM(String ngayM) {
+        this.ngayM = ngayM;
     }
 
     public String getMaMS() {

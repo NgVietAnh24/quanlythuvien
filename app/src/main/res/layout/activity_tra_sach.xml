@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="750dp"
     android:layout_margin="16dp"
     android:background="#80FFFFFF"
     android:orientation="vertical"
@@ -170,7 +170,27 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Ngày mượn:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtNgayM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Tự động cập nhật ngày"
+                android:textAlignment="center"
+                android:inputType="datetime" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

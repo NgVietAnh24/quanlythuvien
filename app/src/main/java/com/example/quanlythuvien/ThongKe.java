@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class ThongKe extends AppCompatActivity {
     List<String> data_t = new ArrayList<>();
     ArrayAdapter arrayAdapter_t;
     DB_Sach db_sach;
+    DB_TraSach dbTraSach;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class ThongKe extends AppCompatActivity {
 
     private void setEvent() {
         db_sach = new DB_Sach(this);
-
+        dbTraSach = new DB_TraSach(this);
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_ts);
 //        lvThongKe.setAdapter(arrayAdapter);
         KhoiTao();
@@ -79,12 +81,22 @@ public class ThongKe extends AppCompatActivity {
                         arrayAdapter.notifyDataSetChanged();
                     }
 
-                }else if (selectItem.equals("Số sách đang mượn")) {
+                } else if (selectItem.equals("số lượng sách mượn nhiều nhất trong tháng")) {
                     // Kiểm tra xem Adapter có tồn tại không
                     if (Danh_Sach_Tra.list != null) {
-                        // Lấy số lượng item trong Adapter (tức là số lượng item trong ListView)
-                        int itemCount = Danh_Sach_Tra.list.size();
-                        txtThongKe.setText("Số sách đang mượn: " + itemCount);
+                        TSach tSach = new TSach();
+
+                        // Assuming that ngayM is a Date object, you may want to format it before using it
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yyyy");
+                        String formattedDate = dateFormat.format(tSach.ngayM);
+
+                        // Get the item count for books borrowed in the given month
+                        String itemCount = dbTraSach.ThongKeMuonTheoThang(formattedDate);
+
+                        // Display the book borrowing statistics in a user-friendly message
+                        txtThongKe.setText("Số lượng sách mượn nhiều nhất trong tháng " + formattedDate + ": " + itemCount);
+
+                        // Assuming arrayAdapter is associated with a ListView, notify it of the data change
                         arrayAdapter.notifyDataSetChanged();
                     }
                 }
